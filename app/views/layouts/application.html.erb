@@ -12,14 +12,15 @@
   <body>
 
     <div class="wrapper" id="outer-wrapper">
-      <div class="wrapper" id="inner-wrapper"></div>
-      <%= yield %>
+      <div class="wrapper" id="inner-wrapper">
+        <div class="container" style="height: 98.5vh">
+          <%= yield %>
+        </div>
+      </div>
     </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-    <%= yield %>
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

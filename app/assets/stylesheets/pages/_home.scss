@@ -1,4 +1,14 @@
 // Specific CSS for your home-page
 #outer-wrapper {
-  background-color: white;
+  background-color: #49E07C;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#inner-wrapper {
+  background-color: #49A1E0;
+  border-radius: 5px;
+  margin: 5px;
 }
