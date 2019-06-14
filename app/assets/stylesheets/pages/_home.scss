@@ -8,7 +8,22 @@
 }
 
 #inner-wrapper {
-  background-color: #49A1E0;
+  background-color: white;
   border-radius: 5px;
-  margin: 5px;
+  margin: 4px;
+  padding: 5px;
+}
+
+#container {
+
+}
+
+#footer {
+  position: fixed;
+  left: 5;
+  bottom: 5;
+  width: 96vw;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  background-color: #D7FBC1;
 }
