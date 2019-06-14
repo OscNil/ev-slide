@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 #outer-wrapper {
-  background-color: #49E07C;
+  background-color: $ev-orange;
   position: absolute;
   top: 0;
   height: 100%;
@@ -15,15 +15,23 @@
 }
 
 #container {
-
+  position: relative;
+  height: 100vh;
 }
 
 #footer {
-  position: fixed;
+  font-size: 2rem;
+  position: absolute;
   left: 5;
   bottom: 5;
   width: 96vw;
-  padding-right: 2rem;
-  padding-left: 2rem;
-  background-color: #D7FBC1;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  color: $ev-blue;
+}
+
+.footer-middle {
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+  padding: 0 3rem 0 3rem;
 }
