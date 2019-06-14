@@ -3,7 +3,6 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 DB:
 
-
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
 <!-- Active URL: https://kitt.lewagon.com/db/2214 -->
