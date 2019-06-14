@@ -1,0 +1,2 @@
+class ChargingPostsController < ApplicationController
+end
