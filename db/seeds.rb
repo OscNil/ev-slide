@@ -65,18 +65,14 @@ user_6 = User.create!(password: '123456',
 puts 'User 6 created!'
 puts 'All users created successfully!'
 
-# puts '!!!Clearing all charging posts'
-# ChargingPost.delete_all
-# puts 'All charging posts deleted!'
-
-# puts 'Creating charging posts'
-# 28.times { |index| ChargingPost.create!()
-#   print "#{index + 1} , " }
-# puts 'All charging posts created successfully!'
+# HEAR YE
+# HEAR YE
+# EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE
+# 28.times { |index| ChargingPost.create!() }
 
 puts 'Creating charging sessions'
 puts '!!!Clearing all charging sessions'
-# ChargingSession.delete_all
+ChargingSession.delete_all
 puts 'Setting date variable'
 rolling_timestamp = Time.now
 
