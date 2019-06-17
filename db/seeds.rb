@@ -101,7 +101,7 @@ session_4 = ChargingSession.create!(charging_post_id: 4,
 puts 'Charging session 4 created! (Start: 1 hour ago. End: still ongoing...)'
 
 session_5 = ChargingSession.create!(charging_post_id: 5,
-                                   user_id: user_1.id,
+                                   user_id: user_2.id,
                                    start_time: rolling_timestamp - (0.5 * 3600),
                                    end_time: nil)
 puts 'Charging session 5 created! (Start: Half an hours ago. End: Ongoing.)'
