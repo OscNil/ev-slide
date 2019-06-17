@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts '!!!Clearing all charging sessions'
+ChargingSession.delete_all
+puts 'All charging sessions deleted!'
+
 puts '!!!Clearing all users'
 User.delete_all
 puts 'Users deleted!'
@@ -61,68 +65,50 @@ user_6 = User.create!(password: '123456',
 puts 'User 6 created!'
 puts 'All users created successfully!'
 
-puts '!!!Clearing all charging posts'
-ChargingPost.delete_all
-puts 'All charging posts deleted!'
+# puts '!!!Clearing all charging posts'
+# ChargingPost.delete_all
+# puts 'All charging posts deleted!'
 
-puts 'Creating charging posts'
-28.times { |index| ChargingPost.create!()
-  print "#{index + 1} , " }
-puts 'All charging posts created successfully!'
+# puts 'Creating charging posts'
+# 28.times { |index| ChargingPost.create!()
+#   print "#{index + 1} , " }
+# puts 'All charging posts created successfully!'
 
 puts 'Creating charging sessions'
 puts '!!!Clearing all charging sessions'
 # ChargingSession.delete_all
 puts 'Setting date variable'
-rolling_timestamp = Date.now
-puts rolling rolling_timestamp
+rolling_timestamp = Time.now
 
-# session_1 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 06:42:20",
-#                                    end_time: "2019-06-17 10:42:20")
-# puts 'Charging session 1 created!'
+session_1 = ChargingSession.create!(charging_post_id: 1,
+                                   user_id: user_1.id,
+                                   start_time: rolling_timestamp - (2 * 3600),
+                                   end_time: rolling_timestamp - (3600))
+puts 'Charging session 1 created! (Start: 2 hours ago. End: 1 hour ago.)'
 
-# session_2 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 07:10:20",
-#                                    end_time: "2019-06-17 11:10:20")
-# puts 'Charging session 2 created!'
+session_2 = ChargingSession.create!(charging_post_id: 2,
+                                   user_id: user_1.id,
+                                   start_time: rolling_timestamp - (1.5 * 3600),
+                                   end_time: rolling_timestamp - (0.75 * 3600))
+puts 'Charging session 2 created! (Start: 1 and a half hours ago. End: 45 minutes ago.)'
 
-# session_1 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 07:45:20",
-#                                    end_time: "2019-06-17 11:45:20")
-# puts 'Charging session 3 created!'
+session_3 = ChargingSession.create!(charging_post_id: 3,
+                                   user_id: user_1.id,
+                                   start_time: rolling_timestamp - (80 * 60),
+                                   end_time: rolling_timestamp - (10 * 60))
+puts 'Charging session 3 created! (Start: 80 minutes ago. End: Ten minutes ago.)'
 
-# session_1 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 08:10:20",
-#                                    end_time: "2019-06-17 09:10:20")
-# puts 'Charging session 4 created!'
+session_4 = ChargingSession.create!(charging_post_id: 4,
+                                   user_id: user_1.id,
+                                   start_time: rolling_timestamp - (3600),
+                                   end_time: nil)
+puts 'Charging session 4 created! (Start: 1 hour ago. End: still ongoing...)'
 
-# session_1 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 08:13:20",
-#                                    end_time: "2019-06-17 09:13:20")
-# puts 'Charging session 5 created!'
+session_5 = ChargingSession.create!(charging_post_id: 5,
+                                   user_id: user_1.id,
+                                   start_time: rolling_timestamp - (0.5 * 3600),
+                                   end_time: nil)
+puts 'Charging session 5 created! (Start: Half an hours ago. End: Ongoing.)'
 
-# session_1 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 09:22:20",
-#                                    end_time: nil)
-# puts 'Charging session 6 created!'
-
-# session_1 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 09:32:20",
-#                                    end_time: nil)
-# puts 'Charging session 7 created!'
-
-# session_1 = ChargingSession.create!(charging_post_id: 1,
-#                                    user_id: 1,
-#                                    start_time: "2019-06-17 10:12:20",
-#                                    end_time: "2019-06-17 12:42:20")
-# puts 'Charging session 8 created!'
 puts 'All charging sessions created successfully!'
 

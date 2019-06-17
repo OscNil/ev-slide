@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2019_06_17_081051) do
   create_table "charging_sessions", force: :cascade do |t|
     t.bigint "charging_post_id"
     t.bigint "user_id"
-    t.date "start_time"
-    t.date "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["charging_post_id"], name: "index_charging_sessions_on_charging_post_id"
