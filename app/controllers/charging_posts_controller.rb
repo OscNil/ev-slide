@@ -1,2 +1,3 @@
 class ChargingPostsController < ApplicationController
+
 end
