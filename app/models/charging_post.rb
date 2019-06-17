@@ -1,3 +1,3 @@
 class ChargingPost < ApplicationRecord
-  has_many :chargin_sessions
+  has_many :charging_sessions
 end
