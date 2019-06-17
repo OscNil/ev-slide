@@ -1,4 +1,4 @@
-class AddFiledsToUsers < ActiveRecord::Migration[5.2]
+class AddFieldsToUsers < ActiveRecord::Migration[5.2]
   def change
     add_column :users, :car_plate, :string
     add_column :users, :first_name, :string

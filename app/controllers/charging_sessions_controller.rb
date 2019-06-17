@@ -10,7 +10,7 @@ class ChargingSessionsController < ApplicationController
       @session = ChargingSession.new(session_params)
       @session.charging_post = ChargingPost.find(params[:charging_post_id])
       @session.user = current_user
-      @session.start_time = Date.new
+      @session.start_time = Time.now
 
       if @session.save
         redirect_to user_path
@@ -23,7 +23,7 @@ class ChargingSessionsController < ApplicationController
 
   def update
     @session = ChargingSession.find(params[:charging_post_id])
-    @session.end_time = Date.new
+    @session.end_time = Time.now
 
     if @session.update(session_params)
       redirect_to user_path
