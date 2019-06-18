@@ -16,21 +16,15 @@
       <%= yield %>
     <% else %>
       <div class="wrapper" id="outer-wrapper">
-        <div class="wrapper" id="inner-wrapper">
-          <div id="container" style="height: 97.3vh">
-            <%= yield %>
-            <div id="footer" class="d-flex justify-content-around">
-              <div>Vu</div><div class="footer-middle">Me</div><div>Qu</div>
-            </div>
-          </div>
+        <div id="container" style="height: 97.3vh">
+          <%= yield %>
         </div>
       </div>
     <% end %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-  </body>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_pack_tag 'application' %>
+</body>
 </html>
