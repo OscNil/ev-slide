@@ -14,6 +14,7 @@
 
   <!-- Should be updated on a second by second basis. -->
   <p>Time remaining (of <%= current_max_hours %> hours): <%= Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %></p>
+  <p><%= link_to "Quit charging", charging_session_path(@session), method: :patch %></p>
 
 <% else %>
   <div class="btn btn-primary">Camera</div>
