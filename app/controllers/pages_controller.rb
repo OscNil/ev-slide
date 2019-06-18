@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @user = current_user
     @session = @user.charging_sessions.find_by(end_time: nil)
     @available_posts = all_posts - occupied_posts
+    @charging_session = ChargingSession.new
   end
 end
 
