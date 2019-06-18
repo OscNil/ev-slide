@@ -4,16 +4,15 @@ class ChargingSessionsController < ApplicationController
   #   @session = ChargingSession.where(user_id: current_user.id, end_time: nil)
   # end
   def create
-    if ChargingSession.where(charging_post_id: params[:charging_post_id], end_time: nil)
+    unless ChargingSession.where(charging_post_id: params[:charging_post_id], end_time: nil).empty?
       flash.now[:notice] = "Charger taken! Won't do anything."
     else
       @session = ChargingSession.new(session_params)
-      @session.charging_post = ChargingPost.find(params[:charging_post_id])
       @session.user = current_user
       @session.start_time = Time.now.utc
 
       if @session.save
-        redirect_to user_path
+        redirect_to authenticated_root_path
       else
         # The same as above...no updates.
         render "user/show"
