@@ -3,10 +3,10 @@
 <p><%= @user.car_plate %> </p>
 
 <% if @session %>
-  <p>Charger: <%= @session.charging_post_id %>
+  <p>Charger: <%= @session.charging_post_id %></p>
   <p>Starting time: <%= @session.start_time.strftime("%H:%M") %></p>
 
-  <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>  <p>
+  <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
 
   <% current_max_hours = 4 %>
   <% max_park_time = Time.at(current_max_hours * 3600) %>
@@ -14,9 +14,8 @@
   <!-- Should be updated on a second by second basis. -->
   <p>Time remaining (of <%= current_max_hours %> hours): <%= Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %></p>
 
-
-
 <% else %>
   <div class="btn btn-primary">Camera</div>
+
 <% end %>
 <%= link_to "Log out", destroy_user_session_path, method: :delete%>
