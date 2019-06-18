@@ -17,7 +17,10 @@
     <% else %>
       <div class="wrapper" id="outer-wrapper">
         <div id="container" style="height: 97.3vh">
+          <%= render "shared/header" %>
           <%= yield %>
+          <%= render "shared/navbar" %>
+
         </div>
       </div>
     <% end %>

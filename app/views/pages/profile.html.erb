@@ -1,4 +1,3 @@
-<%= render "shared/header" %>
 <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
 <p><%= @user.email %> </p>
 <p><%= @user.car_plate %> </p>
@@ -21,8 +20,6 @@
     <p class="time time-hours"></p>
     <p class="time time-minutes"></p>
     <p class="time time-seconds"></p>
-
-
   </div>
   <br>
   <p><%= link_to "Quit charging", charging_session_path(@session), method: :patch %></p>
@@ -36,8 +33,6 @@
     <%= f.submit "Initiate", method: :post, class: "btn btn-success" %>
 
   <% end %>
-<%= render 'shared/navbar' %>
-
 <% end %>
 <div>
 <%= link_to "Log out", destroy_user_session_path, method: :delete%>
