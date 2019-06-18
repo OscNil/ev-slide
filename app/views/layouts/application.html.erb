@@ -10,17 +10,22 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-
-    <div class="wrapper" id="outer-wrapper">
-      <div class="wrapper" id="inner-wrapper">
-        <div id="container" style="height: 97.3vh">
-          <%= yield %>
-          <div id="footer" class="d-flex justify-content-around">
-
+    <% if controller.controller_name == 'sessions' ||
+      controller.controller_name == 'passwords' ||
+      controller.controller_name == 'registrations' %>
+      <%= yield %>
+    <% else %>
+      <div class="wrapper" id="outer-wrapper">
+        <div class="wrapper" id="inner-wrapper">
+          <div id="container" style="height: 97.3vh">
+            <%= yield %>
+            <div id="footer" class="d-flex justify-content-around">
+              <div>Vu</div><div class="footer-middle">Me</div><div>Qu</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
