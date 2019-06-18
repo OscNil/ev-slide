@@ -11,11 +11,24 @@
   <% current_max_hours = 4 %>
   <% max_park_time = Time.at(current_max_hours * 3600) %>
   <% utc_offset = 3 * 3600 %>
+  <% hej = Time.now.utc - @session.start_time.utc%>
+  <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
+
   <!-- Should be updated on a second by second basis. -->
-  <p>Time remaining (of <%= current_max_hours %> hours): <%= Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %></p>
+  <div id="donut">
+    <p class="time-remaining"><%= time %></p>
+    <p class="time time-hours"></p>
+    <p class="time time-minutes"></p>
+    <p class="time time-seconds"></p>
+
+
+  </div>
+  <br>
 
 <% else %>
   <div class="btn btn-primary">Camera</div>
 
 <% end %>
+<div>
 <%= link_to "Log out", destroy_user_session_path, method: :delete%>
+</div>
