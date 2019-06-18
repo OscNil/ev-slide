@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>EV-Slide</title>
-  <%= csrf_meta_tags %>
-  <%= action_cable_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-</head>
-<body>
-
-  <div class="wrapper" id="outer-wrapper">
-    <div id="container" style="height: 97.3vh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EV-Slide</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+  </head>
+  <body>
+    <% if controller.controller_name == 'sessions' ||
+      controller.controller_name == 'passwords' ||
+      controller.controller_name == 'registrations' %>
       <%= yield %>
-    </div>
-  </div>
-
+    <% else %>
+      <div class="wrapper" id="outer-wrapper">
+        <div id="container" style="height: 97.3vh">
+          <%= yield %>
+        </div>
+      </div>
+    <% end %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
