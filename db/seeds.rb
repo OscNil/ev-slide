@@ -20,7 +20,7 @@ user_1 = User.create!(password: '123456',
                       email: 'petra@ikea.com',
                       photo: 'https://kitt.lewagon.com/placeholder/users/pzyee',
                       first_name: 'Petra',
-                      last_name: 'Erlandsson',
+                      last_name: 'Elandersson',
                       car_plate: 'ABC 123')
 puts 'User 1 created!'
 
@@ -74,7 +74,7 @@ puts 'Creating charging sessions'
 puts '!!!Clearing all charging sessions'
 ChargingSession.delete_all
 puts 'Setting date variable'
-rolling_timestamp = Time.now
+rolling_timestamp = Time.now.utc
 
 session_1 = ChargingSession.create!(charging_post_id: 1,
                                    user_id: user_1.id,
