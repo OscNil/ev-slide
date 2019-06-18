@@ -7,16 +7,16 @@ class ChargingSessionsController < ApplicationController
 
 
   def create
-    if ChargingSession.where(charging_post_id: params[:charging_post_id], end_time: nil)
+    unless ChargingSession.where(charging_post_id: params[:charging_post_id], end_time: nil).empty?
       flash.now[:notice] = "Charger taken! Won't do anything."
     else
+
       @session = ChargingSession.new(session_params)
-      @session.charging_post = ChargingPost.find(params[:charging_post_id])
       @session.user = current_user
       @session.start_time = Time.now.utc
 
       if @session.save
-        redirect_to user_path
+        redirect_to authenticated_root_path
       else
         # The same as above...no updates.
         render "user/show"
@@ -25,11 +25,11 @@ class ChargingSessionsController < ApplicationController
   end
 
   def update
-    @session = ChargingSession.find(params[:charging_post_id])
+    @session = ChargingSession.find(params[:id])
     @session.end_time = Time.now.utc
 
-    if @session.update(session_params)
-      redirect_to user_path
+    if @session.save
+      redirect_to authenticated_root_path
     else
       # The same as above...no updates.
       render "user/show"

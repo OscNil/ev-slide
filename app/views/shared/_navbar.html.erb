@@ -1,0 +1,21 @@
+<div class="navbar fixed-bottom">
+
+    <div class="navbar-item">
+      <%= link_to profile_path, id: "navbar-me" do %>
+      <%= image_tag "me_grey.png", class: "navbar-img" %>
+      <% end %>
+    </div>
+
+    <div class="navbar-item">
+      <%= link_to profile_path, id: "navbar-queue" do %>
+      <%= image_tag "queue_grey.png", class: "navbar-img" %>
+      <% end %>
+    </div>
+
+    <div class="navbar-item">
+      <%= link_to profile_path, id: "navbar-view" do %>
+      <%= image_tag "charging_grey.png", class: "navbar-img" %>
+      <% end %>
+    </div>
+
+</div>
