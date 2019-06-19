@@ -26,8 +26,13 @@
   <p><%= link_to "Quit charging", charging_session_path(@session), method: :patch %></p>
 
 <% else %>
-  <%= simple_form_for(@charging_session) do |f| %>
-    <%= f.association :charging_post, collection:@available_posts %>
-    <%= f.submit "Initiate", method: :post, class: "btn btn-success" %>
+  <%= simple_form_for (@charging_session) do |f| %>
+    <div class='d-flex justify-content-between' >
+      <div><%= f.label :charging_post %></div>
+      <div><%= f.association :charging_post, collection:@available_posts, label: false%></div>
+      <div><%= f.submit "Initiate", method: :post, class: "btn btn-success" %></div>
+    </div>
   <% end %>
+
 <% end %>
+
