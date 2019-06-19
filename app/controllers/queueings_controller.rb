@@ -1,6 +1,6 @@
 class QueueingsController < ApplicationController
   def create
-    @queueing = Queueing.new(queueing_params)
+    @queueing = Queueing.new
     @queueing.user = current_user
     @queueing.start_time = Time.now.utc
 

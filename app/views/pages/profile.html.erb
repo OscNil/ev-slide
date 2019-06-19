@@ -10,7 +10,6 @@
   <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
 </div>
 
-
 <% if @session %>
   <p>Charger: <%= @session.charging_post_id %></p>
   <p>Starting time: <%= (@session.start_time.utc + 2.hours).strftime("%H:%M") %></p>
