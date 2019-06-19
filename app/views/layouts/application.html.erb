@@ -20,6 +20,9 @@
     <%= favicon_link_tag asset_path('favicon-32x32.png') %>
   </head>
   <body>
+
+     <%= render 'shared/flashes' %>
+
     <% if controller.controller_name == 'sessions' ||
       controller.controller_name == 'passwords' ||
       controller.controller_name == 'registrations' %>
@@ -34,8 +37,6 @@
         </div>
       </div>
     <% end %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>

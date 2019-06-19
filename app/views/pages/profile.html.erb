@@ -29,7 +29,7 @@
   <%= simple_form_for (@charging_session) do |f| %>
     <div class='d-flex justify-content-between' >
       <div><%= f.label :charging_post %></div>
-      <div><%= f.association :charging_post, collection:@available_posts, label: false%></div>
+      <div><%= f.association :charging_post, collection:@available_posts, required: :true, label: false%></div>
       <div><%= f.submit "Initiate", method: :post, class: "btn btn-success" %></div>
     </div>
   <% end %>
