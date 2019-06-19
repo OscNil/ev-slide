@@ -14,10 +14,9 @@ class ChargingSessionsController < ApplicationController
       @session.start_time = Time.now.utc
 
       if @session.save
-        redirect_to authenticated_root_path
+        redirect_to authenticated_root_path, notice: "updated successfully"
       else
-        # The same as above...no updates.
-        render "user/show"
+        redirect_to authenticated_root_path, alert: "issue with update"
       end
     end
   end
