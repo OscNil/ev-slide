@@ -13,8 +13,9 @@ def occupied_posts
   array_occupied = []
   occupied = ChargingSession.where(end_time: nil)
   occupied.each do |post|
-    array_occupied << post.id
+    array_occupied << post.charging_post_id
   end
+
   return array_occupied
 end
 
