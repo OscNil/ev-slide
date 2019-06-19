@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     # ongoing charging
     @session = @user.charging_sessions.find_by(end_time: nil)
     # standing in the queue
-    @queueing_new = Queueing.new
+    @queueing = Queueing.new
     # ongoing queue
     @queueing_ongoing = @user.queueings.find_by(end_time: nil)
   end
