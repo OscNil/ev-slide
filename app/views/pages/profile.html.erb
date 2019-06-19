@@ -1,24 +1,3 @@
-<%= render "shared/header" %>
-<h1><%= @user.first_name %> <%= @user.last_name %> </h1>
-<p><%= @user.email %> </p>
-<p><%= @user.car_plate %> </p>
-
-<% if @session %>
-  <p>Charger: <%= @session.charging_post_id %></p>
-  <p class="start-time">Starting time: <%= (@session.start_time.utc).strftime("%H:%M") %></p>
-  <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
-
-  <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
-  <% current_max_hours = 4 %>
-  <% max_park_time = Time.at(current_max_hours * 3600) %>
-  <% utc_offset = 3 * 3600 %>
-
-  <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
-
-  <div id="donut">
-    <p class="time-status"><%= time %></p>
-  </div>
-
 <div class='ev-card d-flex justify-content-between' >
   <div><%= image_tag @user.photo, class: "avatar" %></div>
   <div><%= @user.first_name %> <%= @user.last_name %></div>
@@ -31,16 +10,9 @@
   <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
 </div>
 
-
 <!-- Select what to display dependeing on the state -->
 <% if @session %>
 <!-- If the user is charging... -->
-
-  <% current_max_hours = 4 %>
-  <% max_park_time = Time.at(current_max_hours * 3600) %>
-  <% utc_offset = 3 * 3600 %>
-  <% hej = Time.now.utc - @session.start_time.utc%>
-  <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
 
   <div class="ev-card d-flex justify-content-between">
     <div>Outlet: <%= @session.charging_post_id %></div>
@@ -51,6 +23,17 @@
       <% end %>
     </div>
   </div>
+
+  <% current_max_hours = 4 %>
+  <% max_park_time = Time.at(current_max_hours * 3600) %>
+  <% utc_offset = 3 * 3600 %>
+  <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
+  <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
+
+  <div id="donut">
+    <p class="time-status"><%= time %></p>
+  </div>
+
   <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
 
 <% else %>
