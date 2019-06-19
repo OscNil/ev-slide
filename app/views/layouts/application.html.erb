@@ -7,9 +7,22 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <%#= rails style linking of the favicon -->
+    <%= favicon_link_tag asset_path('favicon-32x32.png') %>
   </head>
   <body>
+
+     <%= render 'shared/flashes' %>
+
     <% if controller.controller_name == 'sessions' ||
       controller.controller_name == 'passwords' ||
       controller.controller_name == 'registrations' %>
@@ -17,12 +30,13 @@
     <% else %>
       <div class="wrapper" id="outer-wrapper">
         <div id="container" style="height: 97.3vh">
+          <%= render "shared/header" %>
           <%= yield %>
+          <%= render "shared/navbar" %>
+
         </div>
       </div>
     <% end %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>

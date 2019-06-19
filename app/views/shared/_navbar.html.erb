@@ -1,8 +1,12 @@
-<div class="navbar fixed-bottom">
+<div class="navbar navbar-lewagon fixed-bottom">
 
     <div class="navbar-item">
       <%= link_to profile_path, id: "navbar-me" do %>
-      <%= image_tag "me_grey.png", class: "navbar-img" %>
+        <% if controller_name == "pages" %>
+          <%= image_tag "me_orange.png", class: "navbar-img" %>
+        <% else %>
+          <%= image_tag "me_grey.png", class: "navbar-img" %>
+        <% end %>
       <% end %>
     </div>
 

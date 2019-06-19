@@ -1,0 +1,18 @@
+.ev-card {
+  margin: 1rem !important;
+  border: $border;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  align-items: center;
+  padding: 0 1rem 0 1rem;
+  height: 12%;
+}
+
+#charging-post-dropdown {
+  margin-top: 1rem;
+  margin-bottom: auto;
+}
+
+select {
+  -webkit-appearance: menu;
+}

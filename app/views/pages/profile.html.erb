@@ -8,7 +8,6 @@
   <p class="start-time">Starting time: <%= (@session.start_time.utc).strftime("%H:%M") %></p>
   <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
 
-
   <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
   <% current_max_hours = 4 %>
   <% max_park_time = Time.at(current_max_hours * 3600) %>
@@ -16,31 +15,56 @@
 
   <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
 
-  <% if ( (@session.start_time.utc + 2.hours) > Time.now.utc )  %>
-  <% end %>
   <div id="donut">
     <p class="time-status"><%= time %></p>
   </div>
 
+<div class='ev-card d-flex justify-content-between' >
+  <div><%= image_tag @user.photo, class: "avatar" %></div>
+  <div><%= @user.first_name %> <%= @user.last_name %></div>
+  <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
+</div>
+
+<div class='ev-card d-flex justify-content-between' >
+  <div><%= image_tag 'car.png', class: "avatar" %></div>
+  <div><%= @user.car_plate %></div>
+  <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
+</div>
 
 
-  <!-- Should be updated on a second by second basis. -->
+<!-- Select what to display dependeing on the state -->
+<% if @session %>
+<!-- If the user is charging... -->
 
-  <br>
-  <p><%= link_to "Quit charging", charging_session_path(@session), method: :patch %></p>
+  <% current_max_hours = 4 %>
+  <% max_park_time = Time.at(current_max_hours * 3600) %>
+  <% utc_offset = 3 * 3600 %>
+  <% hej = Time.now.utc - @session.start_time.utc%>
+  <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
+
+  <div class="ev-card d-flex justify-content-between">
+    <div>Outlet: <%= @session.charging_post_id %></div>
+    <div>Starting time: <%= (@session.start_time.utc + 2.hours).strftime("%H:%M") %></div>
+    <div>
+      <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning"  do %>
+        <i class="fas fa-bolt"></i>
+      <% end %>
+    </div>
+  </div>
+  <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
 
 <% else %>
-  <div class="btn btn-primary">Camera</div>
+<!-- If the user is NOT charging... -->
 
-  <%= simple_form_for(@charging_session) do |f| %>
-    <%= f.association :charging_post, collection:@available_posts %>
-
-    <%= f.submit "Initiate", method: :post, class: "btn btn-success" %>
-
+  <%= simple_form_for (@charging_session) do |f| %>
+    <div class='ev-card d-flex justify-content-between' >
+      <div><%= f.label :charging_post, label: "Outlet", required: false %></div>
+      <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: 1,  label: false %></div>
+      <div>
+       <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+       <i class="fas fa-bolt"></i>
+       <% end %>
+      </div>
+    </div>
   <% end %>
-<%= render 'shared/navbar' %>
-
 <% end %>
-<div>
-<%= link_to "Log out", destroy_user_session_path, method: :delete%>
-</div>
