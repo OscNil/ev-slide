@@ -1,7 +1,16 @@
-<h1><%= @user.first_name %> <%= @user.last_name %> </h1>
-<p><%= @user.email %> </p>
-<p><%= @user.car_plate %> </p>
-<%= image_tag @user.photo, class: "avatar" %>
+<div class='ev-card d-flex justify-content-between' >
+  <div><%= image_tag @user.photo, class: "avatar" %></div>
+  <div><%= @user.first_name %> <%= @user.last_name %></div>
+  <div></div>
+</div>
+
+<div class='ev-card d-flex justify-content-between' >
+  <div><%= image_tag 'car.png', class: "avatar" %></div>
+  <div><%= @user.car_plate %></div>
+  <div></div>
+</div>
+
+<p></p>
 
 <% if @session %>
   <p>Charger: <%= @session.charging_post_id %></p>
@@ -27,7 +36,7 @@
 
 <% else %>
   <%= simple_form_for (@charging_session) do |f| %>
-    <div class='d-flex justify-content-between' >
+    <div class='ev-card d-flex justify-content-between' >
       <div><%= f.label :charging_post %></div>
       <div><%= f.association :charging_post, collection:@available_posts, label: false%></div>
       <div><%= f.submit "Initiate", method: :post, class: "btn btn-success" %></div>
@@ -35,6 +44,3 @@
   <% end %>
 
 <% end %>
-<div>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete%>
-</div>
