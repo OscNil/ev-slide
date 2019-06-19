@@ -2,11 +2,15 @@
 #outer-wrapper {
   position: absolute;
   top: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 
 #container {
   position: relative;
   height: 100vh;
+}
+
+body {
+  background-color: white;
 }
