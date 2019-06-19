@@ -10,41 +10,44 @@
   <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
 </div>
 
+<!-- Select what to display dependeing on the state -->
 <% if @session %>
-  <p>Charger: <%= @session.charging_post_id %></p>
-  <p>Starting time: <%= (@session.start_time.utc + 2.hours).strftime("%H:%M") %></p>
+<!-- If the user is charging... -->
 
-  <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
+  <div class="ev-card d-flex justify-content-between">
+    <div>Outlet: <%= @session.charging_post_id %></div>
+    <div>Starting time: <%= (@session.start_time.utc + 2.hours).strftime("%H:%M") %></div>
+    <div>
+      <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning"  do %>
+        <i class="fas fa-bolt"></i>
+      <% end %>
+    </div>
+  </div>
 
   <% current_max_hours = 4 %>
   <% max_park_time = Time.at(current_max_hours * 3600) %>
   <% utc_offset = 3 * 3600 %>
-  <% hej = Time.now.utc - @session.start_time.utc%>
   <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
+  <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
 
-  <!-- Should be updated on a second by second basis. -->
   <div id="donut">
-    <p class="time-remaining"><%= time %></p>
-    <p class="time time-hours"></p>
-    <p class="time time-minutes"></p>
-    <p class="time time-seconds"></p>
+    <p class="time-status"><%= time %></p>
   </div>
-  <br>
-  <p><%= link_to "Quit charging", charging_session_path(@session), method: :patch %></p>
+
+  <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
 
 <% else %>
+<!-- If the user is NOT charging... -->
 
   <%= simple_form_for (@charging_session) do |f| %>
-
     <div class='ev-card d-flex justify-content-between' >
       <div><%= f.label :charging_post, label: "Outlet", required: false %></div>
       <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: 1,  label: false %></div>
       <div>
-         <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-          <i class="fas fa-bolt"></i>
-        <% end %>
+       <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+       <i class="fas fa-bolt"></i>
+       <% end %>
       </div>
     </div>
   <% end %>
-
 <% end %>

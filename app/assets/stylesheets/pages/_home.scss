@@ -17,3 +17,52 @@ body {
   background: linear-gradient($ev-blue, transparent 90%,);
   min-height: 100vh;
 }
+.login-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 55%;
+  min-height: 100vh;
+}
+#login-app_name {
+  font-family: $body-font;
+  font-ight: strong;
+  font-size: 24px;
+  width: 120px;
+}
+ #logo {
+  width: 150px;
+ }
+.form-control {
+  width: 90%;
+  margin: 2px 10px;
+
+}
+.form-div {
+  padding: 10%;
+}
+//.pwd-textbox {
+//  background-color: black;
+//  color: yellow;
+//}
+
+.ev-login-form {
+  input {
+    background: $ev-darkgray;
+    border-radius: 8px;
+    height: 45px;
+    color: white;
+    &:focus {
+      color: white;
+      background: $ev-darkgray;
+    }
+  }
+
+}
+.ev-login-button {
+  background-color: $ev-orange;
+  width: 90%;
+  border-radius: 18px;
+  padding-left: 27%;
+  height: 45px;
+}

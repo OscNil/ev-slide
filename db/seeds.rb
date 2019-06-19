@@ -1,10 +1,10 @@
 # READ THIS:
 
 # EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE
-ChargingPost.delete_all
-puts '!!!Clearing all Charging Posts'
-6.times { |index| ChargingPost.create!() }
-puts '!!!Creating six Charging Posts'
+# ChargingPost.delete_all
+# puts '!!!Clearing all Charging Posts'
+# 6.times { |index| ChargingPost.create!() }
+# puts '!!!Creating six Charging Posts'
 
 ##########
 
@@ -120,9 +120,9 @@ puts 'Charging session 1 created! (Start: 2 hours ago. End: 1 hour ago.)'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
                                    user_id: user_2.id,
-                                   start_time: rolling_timestamp - (1.5 * 3600),
+                                   start_time: rolling_timestamp - (7150),
                                    end_time: nil)
-puts 'Charging session 2 created! (Start: 1 and a half hours ago. End: still ongoing...)'
+puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: still ongoing...)'
 
 session_3 = ChargingSession.create!(charging_post_id: 3,
                                    user_id: user_3.id,
