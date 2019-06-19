@@ -1,10 +1,10 @@
 # READ THIS:
 
 # EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE
-ChargingPost.delete_all
-puts '!!!Clearing all Charging Posts'
-6.times { |index| ChargingPost.create!() }
-puts '!!!Creating six Charging Posts'
+# ChargingPost.delete_all
+# puts '!!!Clearing all Charging Posts'
+# 6.times { |index| ChargingPost.create!() }
+# puts '!!!Creating six Charging Posts'
 
 ##########
 
