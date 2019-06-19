@@ -1,14 +1,7 @@
 class ChargingSessionsController < ApplicationController
-
-  # def show
-  #   @session = ChargingSession.where(user_id: current_user.id, end_time: nil)
-  # end
-
-
-
   def create
     unless ChargingSession.where(charging_post_id: params[:charging_post_id], end_time: nil).empty?
-      flash.now[:notice] = "Charger taken! Won't do anything."
+      flash.now[:notice] = "Charger taken!"
     else
 
       @session = ChargingSession.new(session_params)
@@ -16,9 +9,9 @@ class ChargingSessionsController < ApplicationController
       @session.start_time = Time.now.utc
 
       if @session.save
-        redirect_to authenticated_root_path, notice: "updated successfully"
+        redirect_to authenticated_root_path, notice: "charging creation successfully"
       else
-        redirect_to authenticated_root_path, alert: "issue with update"
+        redirect_to authenticated_root_path, alert: "issue with charging creation"
       end
     end
   end
@@ -28,10 +21,9 @@ class ChargingSessionsController < ApplicationController
     @session.end_time = Time.now.utc
 
     if @session.save
-      redirect_to authenticated_root_path
+      redirect_to authenticated_root_path, notice: "charging updated successfully"
     else
-      # The same as above...no updates.
-      render "user/show"
+      redirect_to authenticated_root_path, alert: "issue with charging update"
     end
   end
 

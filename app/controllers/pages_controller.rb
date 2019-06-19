@@ -1,9 +1,15 @@
 class PagesController < ApplicationController
   def profile
     @user = current_user
-    @session = @user.charging_sessions.find_by(end_time: nil)
+    # initiate charging
     @available_posts = all_posts - occupied_posts
     @charging_session = ChargingSession.new
+    # ongoing charging
+    @session = @user.charging_sessions.find_by(end_time: nil)
+    # standing in the queue
+    @queueing_new = Queueing.new
+    # ongoing queue
+    @queueing_ongoing = @user.queueings.find_by(end_time: nil)
   end
 end
 
