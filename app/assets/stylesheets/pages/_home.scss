@@ -13,6 +13,7 @@
 
 body {
   background-color: white;
-  background: linear-gradient($ev-blue, transparent 70%);
+  // background: linear-gradient($ev-blue, $ev-blue 40%, transparent 60%, transparent 90%,);
+  background: linear-gradient($ev-blue, transparent 90%,);
   min-height: 100vh;
 }
