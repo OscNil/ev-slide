@@ -1,14 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# READ THIS:
+
+# EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE
+ChargingPost.delete_all
+puts '!!!Clearing all Charging Posts'
+6.times { |index| ChargingPost.create!() }
+puts '!!!Creating six Charging Posts'
+
+##########
+
 
 puts '!!!Clearing all charging sessions'
 ChargingSession.delete_all
 puts 'All charging sessions deleted!'
+
+puts '!!!Clearing all queueing sessions'
+Queueing.delete_all
+puts 'All queueing sessions deleted!'
 
 puts '!!!Clearing all users'
 User.delete_all
@@ -63,18 +70,47 @@ user_6 = User.create!(password: '123456',
                       last_name: 'Svensson',
                       car_plate: 'IHG 987')
 puts 'User 6 created!'
-puts 'All users created successfully!'
 
-# HEAR YE
-# HEAR YE
-# EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE
-# 28.times { |index| ChargingPost.create!() }
+user_7 = User.create!(password: '123456',
+                      email: 'alan@ikea.com',
+                      photo: 'https://kitt.lewagon.com/placeholder/users/alancaunt',
+                      first_name: 'Alan',
+                      last_name: 'Caunt',
+                      car_plate: 'III 999')
+puts 'User 7 created!'
+
+user_8 = User.create!(password: '123456',
+                      email: 'andreas@ikea.com',
+                      photo: 'https://kitt.lewagon.com/placeholder/users/amansson',
+                      first_name: 'Andreas',
+                      last_name: 'Månsson',
+                      car_plate: 'HHH 888')
+puts 'User 8 created!'
+
+user_9 = User.create!(password: '123456',
+                      email: 'anne@ikea.com',
+                      photo: 'https://kitt.lewagon.com/placeholder/users/annemff',
+                      first_name: 'Anne',
+                      last_name: 'Hofmann',
+                      car_plate: 'GGG 777')
+puts 'User 9 created!'
+
+user_10 = User.create!(password: '123456',
+                      email: 'drazen@ikea.com',
+                      photo: 'https://kitt.lewagon.com/placeholder/users/drazenv',
+                      first_name: 'Drazen',
+                      last_name: 'Vukovic',
+                      car_plate: 'AAA 111')
+puts 'User 10 created!'
+
+puts 'All users created successfully!'
 
 puts 'Creating charging sessions'
 puts '!!!Clearing all charging sessions'
 ChargingSession.delete_all
 puts 'Setting date variable'
 rolling_timestamp = Time.now.utc
+
 
 session_1 = ChargingSession.create!(charging_post_id: 1,
                                    user_id: user_1.id,
