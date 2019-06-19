@@ -4,8 +4,6 @@ class ChargingSessionsController < ApplicationController
   #   @session = ChargingSession.where(user_id: current_user.id, end_time: nil)
   # end
 
-
-
   def create
     unless ChargingSession.where(charging_post_id: params[:charging_post_id], end_time: nil).empty?
       flash.now[:notice] = "Charger taken! Won't do anything."
