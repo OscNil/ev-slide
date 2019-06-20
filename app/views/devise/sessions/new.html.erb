@@ -18,12 +18,10 @@
                 placeholder: 'password',
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions ev-login-button">
-    <%= f.button :submit, "SIGN IN" %>
+    <%= f.button :submit, "SIGN IN", class: "ev-login-button" %>
   </div>
 <% end %>
+  <div id="link-div">
+    <%= render "devise/shared/links" %>
+  </div>
 </div>
-
-<%= render "devise/shared/links" %>
