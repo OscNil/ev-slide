@@ -11,6 +11,6 @@ class PagesController < ApplicationController
     # ongoing queue
     @queueing_ongoing = @user.queueings.find_by(end_time: nil)
     # (ongoing queue and) parking slot is avaiable - your turn
-    @my_turn = User.myturn?
+    @my_turn = User.myturn?(current_user)
   end
 end

@@ -1,8 +1,12 @@
 class ChargingPost < ApplicationRecord
   has_many :charging_sessions
-  scope :available, -> { joins(:charging_sessions).where.not(charging_sessions: { end_time: nil } ) }
+  scope :availableXX, -> { joins(:charging_sessions).where.not(charging_sessions: { end_time: nil }).distinct }
 
-  def self.available_posts
-    joins(:charging_sessions).where.not(charging_sessions: { end_time: nil })
+  def self.amount_available_posts
+    joins(:charging_sessions).where.not(charging_sessions: { end_time: nil }).distinct.count
+  end
+
+  def self.available
+    ChargingPost.all - ChargingPost.joins(:charging_sessions).where(charging_sessions: { end_time: nil }).order(:id).distinct
   end
 end

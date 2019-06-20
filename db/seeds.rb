@@ -154,7 +154,7 @@ puts 'All charging sessions created successfully!'
 
 
 
-queueing_1 = Queueing.create!(user_id: user_7.id,
+=beginqueueing_1 = Queueing.create!(user_id: user_7.id,
                               start_time: rolling_timestamp - (0.5 * 3600),
                               end_time: nil)
 puts 'Queueing no 1 created! (Start: Half an hours ago. End: still ongoing...)'
@@ -165,3 +165,4 @@ queueing_2 = Queueing.create!(user_id: user_8.id,
 puts 'Queueing no 2 created! (Start: Less than half an hours ago. End: still ongoing...)'
 
 puts 'All queueings created successfully!'
+=end
