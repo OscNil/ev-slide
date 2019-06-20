@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :charging_sessions
   has_many :queueings
+
+  def self.myturn?
+    joins(:charging_sessions).where(charging_sessions: { end_time: nil })
+  end
 end
