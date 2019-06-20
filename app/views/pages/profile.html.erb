@@ -1,3 +1,7 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash" if msg.length > 0 %>
+<% end %>
+
 <div class='ev-card d-flex justify-content-between' >
   <div><%= image_tag @user.photo, class: "avatar" %></div>
   <div><%= @user.first_name %> <%= @user.last_name %></div>
