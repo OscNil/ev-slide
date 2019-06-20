@@ -4,15 +4,15 @@ let start_time = document.querySelector('#starting-time').innerHTML.split(':');
 console.log("start time " +start_time);
 
 // Grab the time left
-let time = document.querySelector('.time-status').innerText.split(':');
+let time_status = document.querySelector('.time-status').innerText.split(':');
+console.log('Time-status: ' + time_status);
 
 // Calc the minutes to get the status of the progress bar
-let time_hour = parseFloat(time[0]);
-let time_minute = parseFloat(time[1]);
-let time_seconds = parseFloat(time[2]);
-let secs = ((time_hour * 3600) + (time_minute * 60) + time_seconds);
-console.log('Secs: ' +secs);
-console.log(240*60);
+let hours = parseFloat(time_status[1]);
+let mins = parseFloat(time_status[2]);
+let seconds = parseFloat(time_status[3]);
+let secs = ((hours * 3600) + (mins * 60) + seconds);
+
 let status = -1 + ( secs / (240*60));
 console.log("status " + status)
 if (status < -0.99999999999){
@@ -24,9 +24,6 @@ else if (status < -0.875){
 else{
   color = 'green';
 }
-
-// console.log('Color: ' + color)
-
 // Create progress bar
 var ProgressBar = require('progressbar.js');
 var bar = new ProgressBar.Circle('#donut', {
@@ -36,13 +33,10 @@ var bar = new ProgressBar.Circle('#donut', {
   color,
   svgStyle: null
 });
+// console.log('Color: ' + color)
 
-// Grab hours, minutes, seconds
-let hours = time[0];
-let mins = time[1];
-let seconds = time[2];
 const clock = document.querySelector('.time-status');
-const curr_clock = document.querySelector('.curr-time');
+const curr_clock = document.querySelector('.fa-clock');
 
     function setDate() {
       // Grab current time
@@ -51,6 +45,8 @@ const curr_clock = document.querySelector('.curr-time');
       let minute_now = date.getMinutes();
       let seconds_now = date.getSeconds();
       let mins_now = ((hour_now* 60) + (minute_now));
+      // console.log('hour-now: ' + hour_now);
+      // console.log('minute_now: ' + minute_now);
 
       let start_hour = (parseFloat(start_time[0].trim()) * 60 * 60);
       let start_minute = ((parseFloat(start_time[1]) + 240) *60);
@@ -59,8 +55,8 @@ const curr_clock = document.querySelector('.curr-time');
 
       let get_time_seconds = ((mins_now * 60) + parseFloat(seconds_now));
 
-      console.log('Start time seconds: ' + start_time_seconds);
-      console.log('Get time seconds: ' + get_time_seconds);
+      // console.log('Start time seconds: ' + start_time_seconds);
+      // console.log('Get time seconds: ' + get_time_seconds);
 
       // Check if elapsed time is less than four hours
       if ( start_time_seconds >= get_time_seconds) {
@@ -83,48 +79,83 @@ const curr_clock = document.querySelector('.curr-time');
         if (mins === 9 || mins === 8 || mins === 7|| mins === 6 || mins === 5 || mins === 4 || mins === 3 || mins === 2 || mins === 1){
           mins = '0' + mins
         }
+
+        // Update remaining time
+        if ( hours === '00') {
+          clock.innerText = mins+':'+seconds;
+        }
+        else
+        {
+          clock.innerText = hours+':'+mins+':'+seconds;
+        }
         date = new Date();
         // re-calculate status
 
       } else {
-        // Time overdue
-        seconds++;
+        let overdue_seconds = get_time_seconds - start_time_seconds;
+        // console.log('Seconds overdue: ' + overdue_seconds);
+        hours_over = Math.floor(overdue_seconds / 3600);
+        // console.log('Hours: ' + hours_over);
+        overdue_seconds %= 3600;
+        minutes_over = Math.floor(overdue_seconds / 60);
+        // console.log('Minutes: ' + minutes_over);
+        seconds_over = overdue_seconds % 60;
+        // console.log('Seconds: ' + seconds_over);
 
-        if (seconds == 60){
-          mins++;
-          seconds = 0;
+        if (hours_over < 10 && hours_over > 0) {
+          minutes_over = '0' + minutes_over;
         }
-        if (seconds <10 && seconds > -1){
-          seconds = '0' + seconds
+        if (minutes_over < 10) {
+          minutes_over = '0' + minutes_over;
         }
-
-        if ( mins == 60 ){
-          hours++;
-          mins = 0;
+        if (seconds_over < 10) {
+          seconds_over = '0' + seconds_over;
         }
-
-        if (mins === 9 || mins === 8 || mins === 7|| mins === 6 || mins === 5 || mins === 4 || mins === 3 || mins === 2 || mins === 1){
-          mins = '0' + mins
+        if ( hours_over === 0) {
+        clock.innerText = 'Overdue: '+ minutes_over+':'+seconds_over;
         }
-
+        else
+        {
+          clock.innerText = 'Overdue: '+ hours_over+':'+minutes_over+':'+seconds_over;
+        }
         status = 1;
         color = 'red';
-
-      }
-      // Update remaining time
-      if ( hours === '00') {
-        clock.innerText = mins+':'+seconds;
-      }
-      else
-      {
-        clock.innerText = hours+':'+mins+':'+seconds;
       }
       // Update current time
-      curr_clock.innerText = 'Current time: ' + hour_now + ':' + minute_now
-      console.log('New status: ' +status);
-      console.log('New Color: ' + color);
+      curr_clock.innerText = ' ' + hour_now + ':' + minute_now
+      // console.log('New status: ' +status);
+      // console.log('New Color: ' + color);
       bar.animate(-(status))  ;  // Number from 0.0 to 1.0
 
     }
 
     setInterval(setDate, 1000);
+
+
+
+
+
+
+
+
+
+
+// Time overdue
+        // seconds++;
+
+        // if (seconds == 60){
+        //   mins++;
+        //   seconds = 0;
+        // }
+        // if (seconds <10 && seconds > -1){
+        //   seconds = '0' + seconds
+        // }
+
+        // if ( mins == 60 ){
+        //   hours++;
+        //   mins = 0;
+        // }
+
+        // if (mins === 9 || mins === 8 || mins === 7|| mins === 6 || mins === 5 || mins === 4 || mins === 3 || mins === 2 || mins === 1){
+        //   mins = '0' + mins
+        // }
