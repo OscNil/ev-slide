@@ -109,7 +109,7 @@ puts 'Creating charging sessions'
 puts '!!!Clearing all charging sessions'
 ChargingSession.delete_all
 puts 'Setting date variable'
-rolling_timestamp = Time.now.utc
+rolling_timestamp = Time.current
 puts "Current time UTC: #{rolling_timestamp}"
 
 
@@ -121,7 +121,7 @@ puts 'Charging session 1 created! (Start: 2 hours ago. End: 1 hour ago.)'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
                                    user_id: user_2.id,
-                                   start_time: rolling_timestamp - (7150),
+                                   start_time: rolling_timestamp - (14355),
                                    end_time: nil)
 puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: still ongoing...)'
 

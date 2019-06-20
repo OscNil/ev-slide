@@ -6,7 +6,7 @@ class ChargingSessionsController < ApplicationController
 
       @session = ChargingSession.new(session_params)
       @session.user = current_user
-      @session.start_time = Time.now.utc
+      @session.start_time = Time.now
 
       if @session.save
         redirect_to authenticated_root_path, notice: "charging creation successfully"
@@ -18,7 +18,7 @@ class ChargingSessionsController < ApplicationController
 
   def update
     @session = ChargingSession.find(params[:id])
-    @session.end_time = Time.now.utc
+    @session.end_time = Time.now
 
     if @session.save
       redirect_to authenticated_root_path, notice: "charging updated successfully"

@@ -16,7 +16,7 @@
 
   <div class="ev-card d-flex justify-content-between">
     <div>Outlet: <%= @session.charging_post_id %></div>
-    <div>Starting time: <%= (@session.start_time.utc + 2.hours).strftime("%H:%M") %></div>
+    <div>Starting time: <%= (@session.start_time).strftime("%H:%M") %></div>
     <div>
       <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning"  do %>
         <i class="fas fa-bolt"></i>
@@ -24,19 +24,13 @@
     </div>
   </div>
 
-  <% current_max_units = 4 %>
-  <% max_park_time = Time.at(current_max_units * 60) %>
-  <!-- Sest the offset to 0 at Thu June 20 to accomodate Heroku time -->
-  <% utc_offset = 0 %>
-  <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
-  <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
+  <p id="starting-time"><%= (@session.start_time).strftime("%H:%M:%S") %></p>
 
   <div class="activity-field">
-    <p><i class="fas fa-clock"></i><%= (Time.now.utc + 2.hours).strftime("%H:%M") %> &nbsp&nbsp&nbsp<i class="fas fa-hourglass-start"></i></p>
+    <p><i class="fas fa-clock"></i>  &nbsp&nbsp&nbsp<i class="fas fa-hourglass-start"></i></p>
     <div id="donut">
     </div>
-    <p class="time-status">Time remaining: <%= time %></p>
-  <p class="curr-time">Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
+    <p class="time-status">Time remaining: <%= @session.time_left_string %></p>
 </div>
 
 <% else %>
