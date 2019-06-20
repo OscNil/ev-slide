@@ -161,5 +161,4 @@ puts 'All charging sessions created successfully!'
 #                               start_time: rolling_timestamp - (0.45 * 3600),
 #                               end_time: nil)
 # puts 'Queueing no 2 created! (Start: Less than half an hours ago. End: still ongoing...)'
-
 # puts 'All queueings created successfully!'
