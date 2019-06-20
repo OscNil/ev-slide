@@ -19,7 +19,7 @@
 <!-- If the user is charging... -->
 
   <div class="ev-card d-flex justify-content-between">
-    <div>Outlet: <%= @session.charging_post_id %></div>
+    <div><i class="fas fa-grip-vertical"></i><%= @session.charging_post_id %></div>
     <div>Starting time: <%= (@session.start_time.utc + 2.hours).strftime("%H:%M") %></div>
     <div>
       <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning"  do %>
@@ -48,7 +48,7 @@
 
   <%= simple_form_for (@charging_session) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
-      <div><%= f.label :charging_post, label: "Outlet", required: false %></div>
+      <div id="outlet-div"><i class="fas fa-grip-vertical"></i><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
       <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts.order(:id), default: 1,  label: false, label_method: :id %></div>
       <div>
        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
