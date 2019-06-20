@@ -17,6 +17,7 @@ body {
   background: linear-gradient($ev-blue, transparent 70%);
   min-height: 100vh;
 }
+
 #login-body {
 
   // background: linear-gradient($ev-blue, $ev-blue 40%, transparent 60%, transparent 90%,);
@@ -36,14 +37,16 @@ body {
   font-size: 24px;
   width: 120px;
 }
- #logo {
+
+#logo {
   width: 150px;
- }
+}
+
 .form-control {
   width: 90%;
   margin: 2px 5%;
-
 }
+
 .form-div {
   padding: 10%;
   padding-top: 20%;
@@ -77,6 +80,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px $ev-darkgray inset !important;
 }
+
 input:-webkit-autofill {
     -webkit-text-fill-color: white !important;
 }
@@ -94,9 +98,11 @@ input:-webkit-autofill {
   height: 45px;
   margin: 2px 5%;
 }
+
 .form-check-input {
   margin-left: 1px;
 }
+
 .form-check-label {
   margin-left: 18px;
 }
@@ -105,8 +111,8 @@ input:-webkit-autofill {
   padding-top: 22px;
 //  border: solid purple;
 }
+
 a {
   color: $ev-darkgray;
   text-decoration: none;
-
 }
