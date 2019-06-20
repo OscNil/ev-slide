@@ -17,6 +17,7 @@ body {
   background: linear-gradient($ev-blue, transparent 70%);
   min-height: 100vh;
 }
+
 #login-body {
 
   // background: linear-gradient($ev-blue, $ev-blue 40%, transparent 60%, transparent 90%,);
@@ -36,14 +37,16 @@ body {
   font-size: 24px;
   width: 120px;
 }
- #logo {
+
+#logo {
   width: 150px;
- }
+}
+
 .form-control {
   width: 90%;
   margin: 2px 5%;
-
 }
+
 .form-div {
   padding: 10%;
   padding-top: 20%;
@@ -59,6 +62,7 @@ body {
       background: $ev-darkgray;
     }
 }
+
 .password {
     background: $ev-darkgray;
     border-radius: 8px;
@@ -69,6 +73,7 @@ body {
       background: $ev-darkgray;
     }
 }
+
 .form-group {
   background-color: transparent;
 }
@@ -82,9 +87,11 @@ body {
   height: 45px;
   margin: 2px 5%;
 }
+
 .form-check-input {
   margin-left: 1px;
 }
+
 .form-check-label {
   margin-left: 18px;
 }
@@ -93,8 +100,8 @@ body {
   padding-top: 22px;
 //  border: solid purple;
 }
+
 a {
   color: $ev-darkgray;
   text-decoration: none;
-
 }
