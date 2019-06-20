@@ -14,15 +14,21 @@
 body {
   background-color: white;
   // background: linear-gradient($ev-blue, $ev-blue 40%, transparent 60%, transparent 90%,);
-  background: linear-gradient($ev-blue, transparent 90%,);
+  background: linear-gradient($ev-blue, transparent 70%);
   min-height: 100vh;
 }
+#login-body {
+
+  // background: linear-gradient($ev-blue, $ev-blue 40%, transparent 60%, transparent 90%,);
+  background: linear-gradient($ev-green, $ev-blue);
+  min-height: 100vh;
+}
+
 .login-logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 55%;
-  min-height: 100vh;
+  padding-top: 30%;
 }
 #login-app_name {
   font-family: $body-font;
@@ -35,19 +41,15 @@ body {
  }
 .form-control {
   width: 90%;
-  margin: 2px 10px;
+  margin: 2px 5%;
 
 }
 .form-div {
   padding: 10%;
+  padding-top: 20%;
 }
-//.pwd-textbox {
-//  background-color: black;
-//  color: yellow;
-//}
 
-.ev-login-form {
-  input {
+.email {
     background: $ev-darkgray;
     border-radius: 8px;
     height: 45px;
@@ -56,13 +58,55 @@ body {
       color: white;
       background: $ev-darkgray;
     }
-  }
-
 }
+
+.password {
+    background: $ev-darkgray;
+    border-radius: 8px;
+    height: 45px;
+    color: white;
+    &:focus {
+      color: white;
+      background: $ev-darkgray;
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px $ev-darkgray inset !important;
+}
+input:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+}
+
+.form-group {
+  background-color: transparent;
+}
+
 .ev-login-button {
   background-color: $ev-orange;
-  width: 90%;
+  color: white;
+  font-weight: strong;
   border-radius: 18px;
-  padding-left: 27%;
+  width: 90%;
   height: 45px;
+  margin: 2px 5%;
+}
+.form-check-input {
+  margin-left: 1px;
+}
+.form-check-label {
+  margin-left: 18px;
+}
+#link-div {
+  padding-left: 22px;
+  padding-top: 22px;
+//  border: solid purple;
+}
+a {
+  color: $ev-darkgray;
+  text-decoration: none;
+
 }

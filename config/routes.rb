@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 
   devise_scope :user do
     authenticated :user do
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'users/sessions#new', as: :unauthenticated_root
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
