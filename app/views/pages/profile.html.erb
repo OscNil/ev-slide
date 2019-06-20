@@ -43,7 +43,7 @@
   <%= simple_form_for (@charging_session) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
       <div><%= f.label :charging_post, label: "Outlet", required: false %></div>
-      <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: 1,  label: false %></div>
+      <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts.order(:id), default: 1,  label: false, label_method: :id %></div>
       <div>
        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
        <i class="fas fa-bolt"></i>
