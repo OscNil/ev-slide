@@ -15,5 +15,25 @@
 
 .activity-field {
   text-align: center;
-  align-items:center;
+  align-items: center;
+}
+
+.fa-grip-vertical {
+  font-size: 2.5rem;
+  transform: scaleX(3);
+  text-align: left;
+}
+
+.hidden-placeholder {
+  visibility: hidden;
+}
+
+i {
+  margin: 0px;
+}
+
+#outlet-div {
+  padding-left: 1.5rem;
+  margin-bottom: -1rem;
+  text-align: left;
 }
