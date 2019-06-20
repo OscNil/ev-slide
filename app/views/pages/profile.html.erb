@@ -26,7 +26,8 @@
 
   <% current_max_hours = 4 %>
   <% max_park_time = Time.at(current_max_hours * 3600) %>
-  <% utc_offset = 3 * 3600 %>
+  <!-- Sest the offset to 0 at Thu June 20 to accomodate Heroku time -->
+  <% utc_offset = 0 %>
   <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
   <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
 

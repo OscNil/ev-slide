@@ -110,6 +110,7 @@ puts '!!!Clearing all charging sessions'
 ChargingSession.delete_all
 puts 'Setting date variable'
 rolling_timestamp = Time.now.utc
+puts "Current time UTC: #{rolling_timestamp}"
 
 
 session_1 = ChargingSession.create!(charging_post_id: 1,
