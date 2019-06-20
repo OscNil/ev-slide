@@ -31,12 +31,13 @@
   <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
   <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
 
-  <div id="donut">
-    <p class="time-status"><%= time %></p>
-  </div>
-
-
+  <div class="activity-field">
+    <p><i class="fas fa-clock"></i><%= (Time.now.utc + 2.hours).strftime("%H:%M") %> &nbsp&nbsp&nbsp<i class="fas fa-hourglass-start"></i></p>
+    <div id="donut">
+    </div>
+    <p class="time-status">Time remaining: <%= time %></p>
   <p class="curr-time">Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
+</div>
 
 <% else %>
 <!-- If the user is NOT charging... -->
