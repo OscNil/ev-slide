@@ -32,10 +32,11 @@
   <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
 
   <div class="activity-field">
-    <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
+    <p><i class="fas fa-clock"></i><%= (Time.now.utc + 2.hours).strftime("%H:%M") %> &nbsp&nbsp&nbsp<i class="fas fa-hourglass-start"></i></p>
     <div id="donut">
     </div>
     <p class="time-status">Time remaining: <%= time %></p>
+
   </div>
 
 <% else %>
