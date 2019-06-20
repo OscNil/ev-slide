@@ -1,3 +1,7 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash" if msg.length > 0 %>
+<% end %>
+
 <div class='ev-card d-flex justify-content-between' >
   <div><%= image_tag @user.photo, class: "avatar" %></div>
   <div><%= @user.first_name %> <%= @user.last_name %></div>
@@ -15,8 +19,8 @@
 <!-- If the user is charging... -->
 
   <div class="ev-card d-flex justify-content-between">
-    <div>Outlet: <%= @session.charging_post_id %></div>
-    <div>Starting time: <%= (@session.start_time.utc + 2.hours).strftime("%H:%M") %></div>
+    <div><%= image_tag "charger.png", class: "charger" %></div>
+    <div><%= @session.charging_post_id %></div>
     <div>
       <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning"  do %>
         <i class="fas fa-bolt"></i>
@@ -24,18 +28,14 @@
     </div>
   </div>
 
-  <% current_max_units = 4 %>
-  <% max_park_time = Time.at(current_max_units * 60) %>
-  <!-- Sest the offset to 0 at Thu June 20 to accomodate Heroku time -->
-  <% utc_offset = 0 %>
-  <% time = Time.at(max_park_time - (Time.now.utc - @session.start_time.utc) - utc_offset).strftime("%H:%M:%S") %>
-  <p id="starting-time"><%= (@session.start_time.utc).strftime("%H:%M:%S") %></p>
+  <p id="starting-time"><%= (@session.start_time).strftime("%H:%M:%S") %></p>
 
-  <div id="donut">
-    <p class="time-status"><%= time %></p>
-  </div>
-
-  <p>Current time: <%= (Time.now.utc + 2.hours).strftime("%H:%M") %></p>
+  <div class="activity-field">
+    <p><i class="fas fa-clock"></i>  &nbsp&nbsp&nbsp<i class="fas fa-hourglass-start"></i></p>
+    <div id="donut">
+    </div>
+    <p class="time-status">Time remaining: <%= @session.time_left_string %></p>
+</div>
 
 <% elsif !@available_posts.empty? %>
 <!-- If the user is NOT charging... -->
@@ -43,8 +43,8 @@
 
   <%= simple_form_for (@charging_session) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
-      <div><%= f.label :charging_post, label: "Outlet", required: false %></div>
-      <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: 1,  label: false, label_method: :id %></div>
+      <div id="outlet-div"><%= image_tag "charger.png", class: "charger" %><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
+      <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
       <div>
        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
        <i class="fas fa-bolt"></i>
@@ -53,3 +53,4 @@
     </div>
   <% end %>
 <% end %>
+

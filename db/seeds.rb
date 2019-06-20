@@ -109,7 +109,7 @@ puts 'Creating charging sessions'
 puts '!!!Clearing all charging sessions'
 ChargingSession.delete_all
 puts 'Setting date variable'
-rolling_timestamp = Time.now.utc
+rolling_timestamp = Time.current
 puts "Current time UTC: #{rolling_timestamp}"
 
 
@@ -121,7 +121,7 @@ puts 'Charging session 1 created! (Start: 2 hours ago. End: 1 hour ago.)'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
                                    user_id: user_2.id,
-                                   start_time: rolling_timestamp - (7150),
+                                   start_time: rolling_timestamp - (14355),
                                    end_time: nil)
 puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: still ongoing...)'
 
@@ -152,17 +152,13 @@ puts 'Charging session 6 created! (Start: Half an hours ago. End: still ongoing.
 puts 'All charging sessions created successfully!'
 
 
+# queueing_1 = Queueing.create!(user_id: user_7.id,
+#                               start_time: rolling_timestamp - (0.5 * 3600),
+#                               end_time: nil)
+# puts 'Queueing no 1 created! (Start: Half an hours ago. End: still ongoing...)'
 
-
-=beginqueueing_1 = Queueing.create!(user_id: user_7.id,
-                              start_time: rolling_timestamp - (0.5 * 3600),
-                              end_time: nil)
-puts 'Queueing no 1 created! (Start: Half an hours ago. End: still ongoing...)'
-
-queueing_2 = Queueing.create!(user_id: user_8.id,
-                              start_time: rolling_timestamp - (0.45 * 3600),
-                              end_time: nil)
-puts 'Queueing no 2 created! (Start: Less than half an hours ago. End: still ongoing...)'
-
-puts 'All queueings created successfully!'
-=end
+# queueing_2 = Queueing.create!(user_id: user_8.id,
+#                               start_time: rolling_timestamp - (0.45 * 3600),
+#                               end_time: nil)
+# puts 'Queueing no 2 created! (Start: Less than half an hours ago. End: still ongoing...)'
+# puts 'All queueings created successfully!'

@@ -6,10 +6,13 @@ class ChargingSessionsController < ApplicationController
 
       @session = ChargingSession.new(session_params)
       @session.user = current_user
-      @session.start_time = Time.now.utc
+      @session.start_time = Time.now
 
       if @session.save
-        redirect_to authenticated_root_path, notice: "charging creation successfully"
+        redirect_to authenticated_root_path
+
+        # The line below should only be implemented for the purpose of finding the location of error messages
+        # redirect_to authenticated_root_path, notice: "charging creation successfully"
       else
         redirect_to authenticated_root_path, alert: "issue with charging creation"
       end
@@ -18,10 +21,12 @@ class ChargingSessionsController < ApplicationController
 
   def update
     @session = ChargingSession.find(params[:id])
-    @session.end_time = Time.now.utc
+    @session.end_time = Time.now
 
     if @session.save
-      redirect_to authenticated_root_path, notice: "charging updated successfully"
+      redirect_to authenticated_root_path
+      # The line below should only be implemented for the purpose of finding the location of error messages
+      # redirect_to authenticated_root_path, notice: "charging updated successfully"
     else
       redirect_to authenticated_root_path, alert: "issue with charging update"
     end
