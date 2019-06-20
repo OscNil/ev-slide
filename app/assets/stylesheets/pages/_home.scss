@@ -14,14 +14,21 @@
 body {
   background-color: white;
   // background: linear-gradient($ev-blue, $ev-blue 40%, transparent 60%, transparent 90%,);
-  background: linear-gradient($ev-blue, transparent 90%,);
+  background: linear-gradient($ev-blue, transparent 90%);
   min-height: 100vh;
 }
+#login-body {
+
+  // background: linear-gradient($ev-blue, $ev-blue 40%, transparent 60%, transparent 90%,);
+  background: linear-gradient($ev-green, $ev-blue);
+  min-height: 100vh;
+}
+
 .login-logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 40%;
+  padding-top: 30%;
 }
 #login-app_name {
   font-family: $body-font;
@@ -39,7 +46,7 @@ body {
 }
 .form-div {
   padding: 10%;
-  padding-top: 30%;
+  padding-top: 20%;
 }
 
 .email {
@@ -71,7 +78,7 @@ body {
   color: white;
   font-weight: strong;
   border-radius: 18px;
-   width: 90%;
+  width: 90%;
   height: 45px;
   margin: 2px 5%;
 }
