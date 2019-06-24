@@ -7,6 +7,15 @@
   margin-left: 1rem;
 }
 
-#me-card {
+.me-card {
+  border: 5px solid $ev-green;
+  box-shadow: $accent-box-shadow;
+}
+
+#me-card-charger-available {
   background-color: $ev-green;
+}
+
+#q-charger {
+  height: 20px;
 }

@@ -1,67 +1,44 @@
-<% flash.each do |name, msg| %>
+<% flash.each do | name, msg | %>
 <%= content_tag :div, msg, :id => "flash" if msg.length > 0 %>
 <% end %>
 
 <!-- Check if there is a queue. TO BE IMPLEMENTED -->
 <% if true %>
-<!-- If there is a queue... -->
+  <!-- If there is a queue... -->
+  <% User.users_in_queue_in_order.each_with_index do | user, idx | %>
+    <!-- Iterate over the queue. -->
+    <div class='ev-card d-flex justify-content-between <% if user.id == current_user.id %>
+      <%= " me-card" %> '
+      <% if @available_posts.count > idx %>
+        <% "id=me-card-charger-available" %>
+      <% end %>
 
-<!-- Iterate over the queue. TO BE IMPLEMENTED -->
-<div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag 'https://kitt.lewagon.com/placeholder/users/oscnil', class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div>Oscar Nilestam</div>
-    <div>-13 mins </div>
-  </div>
-</div>
+    <% end %>
 
-<div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag 'https://kitt.lewagon.com/placeholder/users/pzyee', class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div>Petra Elandersson</div>
-    <div>-20 mins </div>
-  </div>
-</div>
+    >
+      <div><%= image_tag user.photo, class: "avatar" %></div>
+      <div class="d-flex justify-content-between list-for-name">
+        <div><%= user.first_name %> <%= user.last_name %> <%= idx %></div>
+        <div>
+          <!-- IF there ARE available charging posts... -->
+        <% if @available_posts.count > idx %>
+          <!-- ...calculate the time remaining until scheduled checkout... -->
+          -15 mins <%= image_tag "charger.png", id: "q-charger" %> <%= @available_posts.first.id %>
+        <% else %>
+          <!-- ...ELSE just put it to zero -->
+          time remaining
+          <% if user.id == current_user.id %>
 
-<div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag 'https://kitt.lewagon.com/placeholder/users/leniglnn', class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div>Lena Nigrell</div>
-    <div>-26 mins </div>
-  </div>
-</div>
+          <% else %>
 
-<div class='ev-card d-flex justify-content-flex-start' id='me-card' >
-  <div><%= image_tag 'https://kitt.lewagon.com/placeholder/users/depersson', class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div class="name-in-list">Dennis Persson</div>
-    <div>-38 mins </div>
-  </div>
-</div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-<div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag 'https://kitt.lewagon.com/placeholder/users/atmosfeer', class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div>Robert Andersson</div>
-    <div>-39 mins </div>
-  </div>
-</div>
 
-<div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag 'https://kitt.lewagon.com/placeholder/users/alancaunt', class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div>Alan Caunt</div>
-    <div>-46 mins </div>
-  </div>
-</div>
-
-<div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag 'https://kitt.lewagon.com/placeholder/users/annemff', class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div>Anne Hofmann</div>
-    <div>-67 mins </div>
-  </div>
-</div>
 
 <% end %>
 
