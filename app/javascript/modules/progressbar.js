@@ -140,6 +140,5 @@ function setDate() {
   curr_clock.innerText = ' ' + hour_now + ':' + minute_now
 
   bar.animate(-(status))  ;  // Number from 0.0 to 1.0
-  console.log('Color: ' + color);
 
 }
