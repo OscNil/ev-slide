@@ -17,7 +17,7 @@
 
 <div class='ev-card d-flex justify-content-between' >
   <div><%= image_tag 'car.png', class: "avatar" %></div>
-  <div><%= @user.car_plate %></div>
+  <div><p id="reg-plate"><%= @user.car_plate %></p></div>
   <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
 </div>
 
@@ -49,8 +49,8 @@
 
   <%= simple_form_for (@my_ongoing_queueing) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
-      <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
-      <div><%= f.submit 'Remove me from the queue', method: :patch %></div>
+      <p>Place in queue: </p><%= @my_number_in_queue %>
+      <div><%= f.submit 'Leave queue', method: :patch %></div>
     </div>
   <% end %>
 
@@ -70,14 +70,14 @@
 
 <% elsif @my_ongoing_queueing %>
   <!-- If the user is queueing... and there is NOT a available post yet for the user -->
-
-  <%= simple_form_for (@my_ongoing_queueing) do |f| %>
-    <div class='ev-card d-flex justify-content-between' >
-      <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
-      <div><%= f.submit 'Remove me from the queue', method: :patch %></div>
+  <div class='ev-card d-flex justify-content-between' >
+    <%= simple_form_for (@my_ongoing_queueing) do |f| %>
+    <div id='ev-leave-queue-div'>
+      <p id='ev-leave-queue-p'>Place in queue: <%= @my_number_in_queue %> </p>
+      <%= f.submit 'Leave queue', class: "ev-leave-queue-button" , method: :patch %>
     </div>
-  <% end %>
-
+    <% end %>
+  </div>
 
 <% elsif !@no_queue or @available_posts.empty? %>
 <!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->
