@@ -1,6 +1,6 @@
 # READ THIS:
 
-# EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE
+# EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE DB:MIGRATE
 # ChargingPost.delete_all
 # puts '!!!Clearing all Charging Posts'
 # 6.times { |index| ChargingPost.create!() }
@@ -28,7 +28,9 @@ user_1 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/pzyee',
                       first_name: 'Petra',
                       last_name: 'Elandersson',
-                      car_plate: 'ABC 123')
+                      car_plate: 'ABC 123',
+                      points: 0)
+
 puts 'User 1 created!'
 
 user_2 = User.create!(password: '123456',
@@ -36,7 +38,8 @@ user_2 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/depersson',
                       first_name: 'Dennis',
                       last_name: 'Persson',
-                      car_plate: 'DEF 456')
+                      car_plate: 'DEF 456',
+                      points: 50)
 
 puts 'User 2 created!'
 user_3 = User.create!(password: '123456',
@@ -44,7 +47,8 @@ user_3 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/leniglnn',
                       first_name: 'Lena',
                       last_name: 'Nigrell',
-                      car_plate: 'GHI 789')
+                      car_plate: 'GHI 789',
+                      points: -70)
 puts 'User 3 created!'
 
 user_4 = User.create!(password: '123456',
@@ -52,7 +56,8 @@ user_4 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/oscnil',
                       first_name: 'Oscar',
                       last_name: 'Nilestam',
-                      car_plate: 'CBA 321')
+                      car_plate: 'CBA 321',
+                      points: 60)
 puts 'User 4 created!'
 
 user_5 = User.create!(password: '123456',
@@ -60,7 +65,8 @@ user_5 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/atmosfeer',
                       first_name: 'Robert',
                       last_name: 'Andersson',
-                      car_plate: 'FED 654')
+                      car_plate: 'FED 654',
+                      points: -60)
 puts 'User 5 created!'
 
 user_6 = User.create!(password: '123456',
@@ -68,7 +74,9 @@ user_6 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/atmosfeer',
                       first_name: 'Anton',
                       last_name: 'Svensson',
-                      car_plate: 'IHG 987')
+                      car_plate: 'IHG 987',
+                      points: 0)
+
 puts 'User 6 created!'
 
 user_7 = User.create!(password: '123456',
@@ -76,7 +84,9 @@ user_7 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/alancaunt',
                       first_name: 'Alan',
                       last_name: 'Caunt',
-                      car_plate: 'III 999')
+                      car_plate: 'III 999',
+                      points: 0)
+
 puts 'User 7 created!'
 
 user_8 = User.create!(password: '123456',
@@ -84,7 +94,9 @@ user_8 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/amansson',
                       first_name: 'Andreas',
                       last_name: 'Månsson',
-                      car_plate: 'HHH 888')
+                      car_plate: 'HHH 888',
+                      points: 0)
+
 puts 'User 8 created!'
 
 user_9 = User.create!(password: '123456',
@@ -92,7 +104,9 @@ user_9 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/annemff',
                       first_name: 'Anne',
                       last_name: 'Hofmann',
-                      car_plate: 'GGG 777')
+                      car_plate: 'GGG 777',
+                      points: 0)
+
 puts 'User 9 created!'
 
 user_10 = User.create!(password: '123456',
@@ -100,7 +114,9 @@ user_10 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/drazenv',
                       first_name: 'Drazen',
                       last_name: 'Vukovic',
-                      car_plate: 'AAA 111')
+                      car_plate: 'AAA 111',
+                      points: 0)
+
 puts 'User 10 created!'
 
 puts 'All users created successfully!'
@@ -121,31 +137,36 @@ puts 'Charging session 1 created! (Start: 2 hours ago. End: 1 hour ago.)'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
                                    user_id: user_2.id,
-                                   start_time: rolling_timestamp - (14355),
+                                   # 14355 if 4 hours, 180 if 4 minutes
+                                   start_time: rolling_timestamp - (180),
                                    end_time: nil)
-puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: still ongoing...)'
+puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: one minute left)'
 
 session_3 = ChargingSession.create!(charging_post_id: 3,
                                    user_id: user_3.id,
-                                   start_time: rolling_timestamp - (80 * 60),
+                                   # 80 * 60 when four hours, 60 when 4 minutes
+                                   start_time: rolling_timestamp - (60),
                                    end_time: nil)
-puts 'Charging session 3 created! (Start: 80 minutes ago. End: still ongoing...)'
+puts 'Charging session 3 created! (Start: 80 minutes ago. End: three minutes left)'
 
 session_4 = ChargingSession.create!(charging_post_id: 4,
                                    user_id: user_4.id,
-                                   start_time: rolling_timestamp - (3600),
+                                   # 3600 when four hours, 120 when 4 minutes
+                                   start_time: rolling_timestamp - (120),
                                    end_time: nil)
-puts 'Charging session 4 created! (Start: 1 hour ago. End: still ongoing...)'
+puts 'Charging session 4 created! (Start: 1 hour ago. End: 2 minutes left)'
 
 session_5 = ChargingSession.create!(charging_post_id: 5,
                                    user_id: user_5.id,
-                                   start_time: rolling_timestamp - (0.5 * 3600),
+                                   # 0.5 * 3600 when four hours, 100 when 4 minute
+                                   start_time: rolling_timestamp - (100),
                                    end_time: nil)
 puts 'Charging session 5 created! (Start: Half an hours ago. End: still ongoing...)'
 
 session_5 = ChargingSession.create!(charging_post_id: 6,
                                    user_id: user_6.id,
-                                   start_time: rolling_timestamp - (0.5 * 3600),
+                                   # 0.5 * 3600when four hours, 150 when 4 minutes
+                                   start_time: rolling_timestamp - (150),
                                    end_time: nil)
 puts 'Charging session 6 created! (Start: Half an hours ago. End: still ongoing...)'
 
