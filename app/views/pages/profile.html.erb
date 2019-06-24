@@ -77,20 +77,21 @@
 <% elsif !@no_queue or @available_posts.empty? %>
 <!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->
 
-
+<div class='ev-card d-flex justify-content-between' >
   <%= simple_form_for (@queueing) do |f| %>
-    <div class='ev-card d-flex justify-content-between' >
-      <div><%= f.submit 'Put me in the queue' %></div>
-    </div>
+  <div id='ev-queue-div'>
+    <%= image_tag "queue_grey.png", class: "ev-queue-img" %>
+    <%= f.submit 'Enter queue', class: "ev-queue-button" %>
+  </div>
   <% end %>
-
+</div>
 
 <% elsif !@available_posts.empty? %>
 <!-- If the user is NOT charging or NOT in queue and there is NO queue... and charger post is available-->
 
 
   <%= simple_form_for (@charging_session) do |f| %>
-    <div class='ev-card d-flex justify-content-between' >
+    <div class='ev-card d-flex'>
       <div id="outlet-div"><%= image_tag "charger.png", class: "charger" %><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
       <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
       <div>
@@ -102,6 +103,3 @@
   <% end %>
 
 <% end %>
-
-
-
