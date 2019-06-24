@@ -1,6 +1,6 @@
 # READ THIS:
 
-# EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE
+# EXECUTE THIS NEXT LINE ONCE AFTER DB:DROP DB:CREATE DB:MIGRATE
 # ChargingPost.delete_all
 # puts '!!!Clearing all Charging Posts'
 # 6.times { |index| ChargingPost.create!() }
@@ -121,31 +121,36 @@ puts 'Charging session 1 created! (Start: 2 hours ago. End: 1 hour ago.)'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
                                    user_id: user_2.id,
-                                   start_time: rolling_timestamp - (14355),
+                                   # 14355 if 4 hours, 180 if 4 minutes
+                                   start_time: rolling_timestamp - (180),
                                    end_time: nil)
-puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: still ongoing...)'
+puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: one minute left)'
 
 session_3 = ChargingSession.create!(charging_post_id: 3,
                                    user_id: user_3.id,
-                                   start_time: rolling_timestamp - (80 * 60),
+                                   # 80 * 60 when four hours, 60 when 4 minutes
+                                   start_time: rolling_timestamp - (60),
                                    end_time: nil)
-puts 'Charging session 3 created! (Start: 80 minutes ago. End: still ongoing...)'
+puts 'Charging session 3 created! (Start: 80 minutes ago. End: three minutes left)'
 
 session_4 = ChargingSession.create!(charging_post_id: 4,
                                    user_id: user_4.id,
-                                   start_time: rolling_timestamp - (3600),
+                                   # 3600 when four hours, 120 when 4 minutes
+                                   start_time: rolling_timestamp - (120),
                                    end_time: nil)
-puts 'Charging session 4 created! (Start: 1 hour ago. End: still ongoing...)'
+puts 'Charging session 4 created! (Start: 1 hour ago. End: 2 minutes left)'
 
 session_5 = ChargingSession.create!(charging_post_id: 5,
                                    user_id: user_5.id,
-                                   start_time: rolling_timestamp - (0.5 * 3600),
+                                   # 0.5 * 3600 when four hours, 100 when 4 minute
+                                   start_time: rolling_timestamp - (100),
                                    end_time: nil)
 puts 'Charging session 5 created! (Start: Half an hours ago. End: still ongoing...)'
 
 session_5 = ChargingSession.create!(charging_post_id: 6,
                                    user_id: user_6.id,
-                                   start_time: rolling_timestamp - (0.5 * 3600),
+                                   # 0.5 * 3600when four hours, 150 when 4 minutes
+                                   start_time: rolling_timestamp - (150),
                                    end_time: nil)
 puts 'Charging session 6 created! (Start: Half an hours ago. End: still ongoing...)'
 
