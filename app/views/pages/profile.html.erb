@@ -5,7 +5,14 @@
 <div class='ev-card d-flex justify-content-between' >
   <div><%= image_tag @user.photo, class: "avatar" %></div>
   <div><%= @user.first_name %> <%= @user.last_name %></div>
-  <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
+  <div id='points'>
+    <div><p id='acdc'>AC/DC</p></div>
+    <% if @user.points >= 0 %>
+      <div id='plus_points'><p>+<%= @user.points %></p></div>
+    <% else %>
+      <div id='minus_points'><p><%= @user.points %></p></div>
+    <% end %>
+  </div>
 </div>
 
 <div class='ev-card d-flex justify-content-between' >

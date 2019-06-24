@@ -48,4 +48,51 @@ select {
 }
 .btn-warning {
  background-color: $ev-orange;
+ width: 50px;
+ border-radius: 10px;
+ height: 35px;
+}
+#points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  p {
+    margin-bottom: 0px;
+  }
+}
+#acdc {
+  font-family: $body-font;
+  font-weight: bold;
+  font-size: 10;
+  padding-bottom: 0px;
+}
+#plus_points {
+  width: 52px;
+  height: 32px;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  color: green;
+  box-shadow: $box-shadow;
+    p {
+    font-family: $body-font;
+    font-weight: bold;
+    padding-top: 5px;
+  }
+}
+
+#minus_points {
+  width: 52px;
+  height: 32px;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  color: red;
+  box-shadow: $box-shadow;
+  p {
+    font-family: $body-font;
+    font-weight: bold;
+    padding-top: 5px;
+  }
 }
