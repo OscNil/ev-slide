@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :find_available_posts
+
   def profile
     @user = current_user
 
@@ -19,5 +21,12 @@ class PagesController < ApplicationController
     # initiate
     @charging_session = ChargingSession.new
     @queueing = Queueing.new
+  end
+
+  def queue
+  end
+
+  def find_available_posts
+    @available_posts = ChargingPost.available_posts
   end
 end
