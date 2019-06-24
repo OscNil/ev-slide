@@ -13,10 +13,13 @@ let mins = parseFloat(time_status[2]);
 let seconds = parseFloat(time_status[3]);
 let secs = ((hours * 3600) + (mins * 60) + seconds);
 
-let status = -1 + ( secs / (240*60));
+// Add remove 60 * depending on 4 minutes or hours
+// Also change in appl_controller and charg_session
+let status = -1 + ( secs / (60 * 240));
 console.log("status " + status)
 if (status < -0.99999999999){
   color = 'red';
+  status = -1
 }
 else if (status < -0.875){
   color = 'yellow';
@@ -122,6 +125,10 @@ const curr_clock = document.querySelector('.fa-clock');
         color = 'red';
       }
       // Update current time
+      if (minute_now < 10 ){
+        minute_now = '0' + minute_now
+      }
+
       curr_clock.innerText = ' ' + hour_now + ':' + minute_now
       // console.log('New status: ' +status);
       // console.log('New Color: ' + color);
@@ -130,32 +137,3 @@ const curr_clock = document.querySelector('.fa-clock');
     }
 
     setInterval(setDate, 1000);
-
-
-
-
-
-
-
-
-
-
-// Time overdue
-        // seconds++;
-
-        // if (seconds == 60){
-        //   mins++;
-        //   seconds = 0;
-        // }
-        // if (seconds <10 && seconds > -1){
-        //   seconds = '0' + seconds
-        // }
-
-        // if ( mins == 60 ){
-        //   hours++;
-        //   mins = 0;
-        // }
-
-        // if (mins === 9 || mins === 8 || mins === 7|| mins === 6 || mins === 5 || mins === 4 || mins === 3 || mins === 2 || mins === 1){
-        //   mins = '0' + mins
-        // }
