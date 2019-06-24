@@ -7,7 +7,7 @@ DB:
 
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: https://kitt.lewagon.com/db/2214 -->
+<!-- Active URL: https://kitt.lewagon.com/db/2218 -->
 <sql>
 <datatypes db="postgresql">
  <group label="Numeric" color="rgb(238,238,170)">
@@ -48,7 +48,7 @@ DB:
   <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
   <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
  </group>
-</datatypes><table x="851" y="132" name="users">
+</datatypes><table x="779" y="131" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -69,6 +69,9 @@ DB:
 <default>NULL</default></row>
 <row name="photo" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="points" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
