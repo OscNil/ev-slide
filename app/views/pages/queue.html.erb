@@ -14,7 +14,7 @@
           <!-- IF there ARE available charging posts... -->
         <% if @available_posts.count > idx %>
           <!-- ...calculate the time remaining until scheduled checkout... -->
-          <%= image_tag "charger.png", id: "q-charger" %> <%= @available_posts.first.id %>
+          <%= image_tag "charger.png", id: "q-charger" %> <%= @available_posts[idx].id %>
         <% else %>
           <!-- ...ELSE just put it to zero -->
           time remaining
