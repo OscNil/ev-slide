@@ -28,7 +28,9 @@ user_1 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/pzyee',
                       first_name: 'Petra',
                       last_name: 'Elandersson',
-                      car_plate: 'ABC 123')
+                      car_plate: 'ABC 123',
+                      points: 0)
+
 puts 'User 1 created!'
 
 user_2 = User.create!(password: '123456',
@@ -36,7 +38,8 @@ user_2 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/depersson',
                       first_name: 'Dennis',
                       last_name: 'Persson',
-                      car_plate: 'DEF 456')
+                      car_plate: 'DEF 456',
+                      points: 50)
 
 puts 'User 2 created!'
 user_3 = User.create!(password: '123456',
@@ -44,7 +47,8 @@ user_3 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/leniglnn',
                       first_name: 'Lena',
                       last_name: 'Nigrell',
-                      car_plate: 'GHI 789')
+                      car_plate: 'GHI 789',
+                      points: -70)
 puts 'User 3 created!'
 
 user_4 = User.create!(password: '123456',
@@ -52,7 +56,8 @@ user_4 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/oscnil',
                       first_name: 'Oscar',
                       last_name: 'Nilestam',
-                      car_plate: 'CBA 321')
+                      car_plate: 'CBA 321',
+                      points: 60)
 puts 'User 4 created!'
 
 user_5 = User.create!(password: '123456',
@@ -60,7 +65,8 @@ user_5 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/atmosfeer',
                       first_name: 'Robert',
                       last_name: 'Andersson',
-                      car_plate: 'FED 654')
+                      car_plate: 'FED 654',
+                      points: -60)
 puts 'User 5 created!'
 
 user_6 = User.create!(password: '123456',
@@ -68,7 +74,9 @@ user_6 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/atmosfeer',
                       first_name: 'Anton',
                       last_name: 'Svensson',
-                      car_plate: 'IHG 987')
+                      car_plate: 'IHG 987',
+                      points: 0)
+
 puts 'User 6 created!'
 
 user_7 = User.create!(password: '123456',
@@ -76,7 +84,9 @@ user_7 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/alancaunt',
                       first_name: 'Alan',
                       last_name: 'Caunt',
-                      car_plate: 'III 999')
+                      car_plate: 'III 999',
+                      points: 0)
+
 puts 'User 7 created!'
 
 user_8 = User.create!(password: '123456',
@@ -84,7 +94,9 @@ user_8 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/amansson',
                       first_name: 'Andreas',
                       last_name: 'Månsson',
-                      car_plate: 'HHH 888')
+                      car_plate: 'HHH 888',
+                      points: 0)
+
 puts 'User 8 created!'
 
 user_9 = User.create!(password: '123456',
@@ -92,7 +104,9 @@ user_9 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/annemff',
                       first_name: 'Anne',
                       last_name: 'Hofmann',
-                      car_plate: 'GGG 777')
+                      car_plate: 'GGG 777',
+                      points: 0)
+
 puts 'User 9 created!'
 
 user_10 = User.create!(password: '123456',
@@ -100,7 +114,9 @@ user_10 = User.create!(password: '123456',
                       photo: 'https://kitt.lewagon.com/placeholder/users/drazenv',
                       first_name: 'Drazen',
                       last_name: 'Vukovic',
-                      car_plate: 'AAA 111')
+                      car_plate: 'AAA 111',
+                      points: 0)
+
 puts 'User 10 created!'
 
 puts 'All users created successfully!'
