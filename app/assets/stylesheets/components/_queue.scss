@@ -16,6 +16,26 @@
   background-color: $ev-green;
 }
 
+#ev-queue-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 320px;
+  margin-left: 5px;
+}
+
+.ev-queue-button {
+  background-color: $ev-green;
+  color: black;
+  border-radius: 18px;
+  width: 50%;
+  height: 45px;
+  margin: 2px 5%;
+}
+
+.ev-queue-img {
+  height: 35px;
+}
 
 #q-charger {
   height: 20px;
