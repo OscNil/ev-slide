@@ -1,5 +1,8 @@
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
+Script for presentation on the 28:th:
+https://docs.google.com/document/d/1PXJN9Ls-39Y7N5bsSsnZoY4HSNCTVEM9_2k4vtr1s04/edit?usp=sharing
+
 Heroku address:
 https://ev-slide.herokuapp.com/
 
