@@ -63,8 +63,8 @@ select {
 }
 #acdc {
   font-family: $body-font;
-  font-weight: bold;
-  font-size: 10;
+//  font-weight: bold;
+  font-size: 9;
   padding-bottom: 0px;
 }
 #plus_points {
@@ -95,4 +95,8 @@ select {
     font-weight: bold;
     padding-top: 5px;
   }
+}
+#reg-plate {
+  font-family: courier;
+  margin-bottom: 0px;
 }
