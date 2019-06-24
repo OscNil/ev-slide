@@ -14,6 +14,7 @@
   <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </div>
 </div>
 
+
 <!-- Select what to display dependeing on the state -->
 <% if @session %>
 <!-- If the user is charging... -->
@@ -34,10 +35,51 @@
     <div id="donut">
     </div>
     <p class="time-status">Time remaining: <%= @session.time_left_string %></p>
-</div>
+  </div>
+
+<% elsif @my_ongoing_queueing and @my_turn %>
+<!-- If the user is queueing... and there is NOT a available slot for the user -->
+
+  <div class="ev-card d-flex justify-content-between">
+    <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
+  </div>
+  <!-- REMOVE ME FROM THE QUEUE if that is a wish-->
+
+  <%= simple_form_for (@charging_session) do |f| %>
+    <div class='ev-card d-flex justify-content-between' >
+      <div><p>Time for you to move your car and start charging.</p></div>
+      <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
+      <div>
+       <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+       <i class="fas fa-bolt"></i>
+       <% end %>
+      </div>
+    </div>
+  <% end %>
+  <!-- REMOVE ME FROM THE QUEUE when session taken-->
+
+
+<% elsif @my_ongoing_queueing %>
+  <!-- If the user is queueing... and there is NOT a available slot yet for the user -->
+
+  <div class="ev-card d-flex justify-content-between">
+    <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
+  </div>
+  <!-- REMOVE ME FROM THE QUEUE -->
+
+<% elsif !@no_queue or @available_posts.empty? %>
+<!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->
+
+
+  <%= simple_form_for (@queueing) do |f| %>
+    <div class='ev-card d-flex justify-content-between' >
+      <div><%= f.submit 'Put me in the queue' %></div>
+    </div>
+  <% end %>
+
 
 <% elsif !@available_posts.empty? %>
-<!-- If the user is NOT charging... -->
+<!-- If the user is NOT charging or NOT in queue and there is NO queue... and charger post is available-->
 
 
   <%= simple_form_for (@charging_session) do |f| %>
@@ -51,5 +93,8 @@
       </div>
     </div>
   <% end %>
+
 <% end %>
+
+
 
