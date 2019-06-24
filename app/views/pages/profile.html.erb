@@ -49,18 +49,18 @@
 
   <%= simple_form_for (@my_ongoing_queueing) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
-      <p>Place in queue: </p><%= @my_number_in_queue %>
-      <div><%= f.submit 'Leave queue', method: :patch %></div>
+      <%= image_tag "queue_grey.png", class: "ev-queue-img" %><%= @my_number_in_queue %>
+      <div><%= f.submit 'Leave queue', method: :patch, class: "btn btn-warning" %></div>
     </div>
   <% end %>
 
   <%= simple_form_for (@charging_session) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
-      <div><p>Time for you to move your car and start charging.</p></div>
+      <div><%= image_tag "charger.png", class: "charger" %></div>
       <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
       <div>
        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-       <i class="fas fa-bolt"></i>
+       &nbsp&nbsp<i class="fas fa-bolt"></i>&nbsp&nbsp
        <% end %>
       </div>
     </div>
@@ -73,7 +73,7 @@
   <div class='ev-card d-flex justify-content-between' >
     <%= simple_form_for (@my_ongoing_queueing) do |f| %>
     <div id='ev-leave-queue-div'>
-      <p id='ev-leave-queue-p'>Place in queue: <%= @my_number_in_queue %> </p>
+      <%= image_tag "queue_grey.png", class: "ev-queue-img" %> <%= @my_number_in_queue %>
       <%= f.submit 'Leave queue', class: "ev-leave-queue-button" , method: :patch %>
     </div>
     <% end %>

@@ -45,12 +45,14 @@ select {
 }
 .btn-success {
   background-color: $ev-green;
+  border-radius: 10px;
+  height: 35px;
 }
 .btn-warning {
- background-color: $ev-orange;
- width: 50px;
- border-radius: 10px;
- height: 35px;
+  background-color: $ev-orange;
+  // width: 50px;
+  border-radius: 10px;
+  height: 35px;
 }
 #points {
   display: flex;
