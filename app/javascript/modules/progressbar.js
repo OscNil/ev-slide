@@ -1,31 +1,44 @@
 // Grab the start time
 let color;
+let time_status;
+let status;
+let hours;
+let mins;
+let seconds;
+
 let start_time = document.querySelector('#starting-time').innerHTML.split(':');
 console.log("start time " +start_time);
 
+function get_time_status () {
 // Grab the time left
-let time_status = document.querySelector('.time-status').innerText.split(':');
-console.log('Time-status: ' + time_status);
+  time_status = document.querySelector('.time-status').innerText.split(':');
+  console.log('Time-status: ' + time_status);
+}
+get_time_status();
 
-// Calc the minutes to get the status of the progress bar
-let hours = parseFloat(time_status[1]);
-let mins = parseFloat(time_status[2]);
-let seconds = parseFloat(time_status[3]);
-let secs = ((hours * 3600) + (mins * 60) + seconds);
+function setStatus() {
+  get_time_status();
+  // Calc the minutes to get the status of the progress bar
+  hours = parseFloat(time_status[1]);
+  mins = parseFloat(time_status[2]);
+  seconds = parseFloat(time_status[3]);
+  let secs = ((hours * 3600) + (mins * 60) + seconds);
 
-// Change between 240 and 3600 depending on 4 minutes or hours
-// Also change in appl_controller and charg_session
-let status = -1 + ( secs / (240));
-if (status < -0.99999999999){
-  color = 'red';
-  status = -1
+  // Change between 240 and 3600 depending on 4 minutes or hours
+  // Also change in appl_controller and charg_session
+  status = -1 + ( secs / (240));
+  if (status < -0.99999999999){
+    color = 'red';
+    status = -1
+  }
+  else if (status < -0.875){
+    color = 'yellow';
+  }
+  else{
+    color = 'green';
+  }
 }
-else if (status < -0.875){
-  color = 'yellow';
-}
-else{
-  color = 'green';
-}
+setStatus();
 // Create progress bar
 var ProgressBar = require('progressbar.js');
 var bar = new ProgressBar.Circle('#donut', {
@@ -79,7 +92,8 @@ const curr_clock = document.querySelector('.fa-clock');
           mins = 59;
         }
 
-        if (mins === 9 || mins === 8 || mins === 7|| mins === 6 || mins === 5 || mins === 4 || mins === 3 || mins === 2 || mins === 1){
+        // if (mins === 9 || mins === 8 || mins === 7|| mins === 6 || mins === 5 || mins === 4 || mins === 3 || mins === 2 || mins === 1){
+        if (mins < 10) {
           mins = '0' + mins
         }
 
@@ -89,10 +103,11 @@ const curr_clock = document.querySelector('.fa-clock');
         }
         else
         {
-          clock.innerText = hours+':'+mins+':'+seconds;
+          clock.innerText = 'Remaining time: ' + hours+':'+mins+':'+seconds;
         }
         date = new Date();
         // re-calculate status
+        setStatus();
 
       } else {
         let overdue_seconds = time_now_seconds - start_time_seconds;
