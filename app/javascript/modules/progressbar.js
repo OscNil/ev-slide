@@ -13,10 +13,9 @@ let mins = parseFloat(time_status[2]);
 let seconds = parseFloat(time_status[3]);
 let secs = ((hours * 3600) + (mins * 60) + seconds);
 
-// Add remove 60 * depending on 4 minutes or hours
+// Change between 240 and 3600 depending on 4 minutes or hours
 // Also change in appl_controller and charg_session
-let status = -1 + ( secs / (60 * 240));
-console.log("status " + status)
+let status = -1 + ( secs / (240));
 if (status < -0.99999999999){
   color = 'red';
   status = -1
@@ -47,22 +46,23 @@ const curr_clock = document.querySelector('.fa-clock');
       let hour_now = date.getHours();
       let minute_now = date.getMinutes();
       let seconds_now = date.getSeconds();
-      let mins_now = ((hour_now* 60) + (minute_now));
+      let mins_now = ((hour_now * 60) + (minute_now));
       // console.log('hour-now: ' + hour_now);
       // console.log('minute_now: ' + minute_now);
 
       let start_hour = (parseFloat(start_time[0].trim()) * 60 * 60);
-      let start_minute = ((parseFloat(start_time[1]) + 240) *60);
+      // Change position of 0 and 240 depending on 4 hours / 4 minutes
+      let start_minute = ((parseFloat(start_time[1]) + 0) *60) + 240;
       let start_second = (parseFloat(start_time[2]));
+
       let start_time_seconds = start_hour + start_minute + start_second;
+      let time_now_seconds = ((mins_now * 60) + parseFloat(seconds_now));
 
-      let get_time_seconds = ((mins_now * 60) + parseFloat(seconds_now));
-
-      // console.log('Start time seconds: ' + start_time_seconds);
-      // console.log('Get time seconds: ' + get_time_seconds);
+      console.log('Start time seconds: ' + start_time_seconds);
+      console.log('Get time seconds: ' + time_now_seconds);
 
       // Check if elapsed time is less than four hours
-      if ( start_time_seconds >= get_time_seconds) {
+      if ( start_time_seconds >= time_now_seconds) {
         // Remaining time
         seconds--;
 
@@ -95,7 +95,7 @@ const curr_clock = document.querySelector('.fa-clock');
         // re-calculate status
 
       } else {
-        let overdue_seconds = get_time_seconds - start_time_seconds;
+        let overdue_seconds = time_now_seconds - start_time_seconds;
         // console.log('Seconds overdue: ' + overdue_seconds);
         hours_over = Math.floor(overdue_seconds / 3600);
         // console.log('Hours: ' + hours_over);
