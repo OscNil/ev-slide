@@ -7,9 +7,15 @@
   margin-left: 1rem;
 }
 
-#me-card {
+.me-card {
+  border: 5px solid $ev-green;
+  box-shadow: $accent-box-shadow;
+}
+
+.me-card-charger-available {
   background-color: $ev-green;
 }
+
 #ev-queue-div {
   display: flex;
   align-items: center;
@@ -17,6 +23,7 @@
   width: 320px;
   margin-left: 5px;
 }
+
 .ev-queue-button {
   background-color: $ev-green;
   color: black;
@@ -24,8 +31,12 @@
   width: 50%;
   height: 45px;
   margin: 2px 5%;
-
 }
+
 .ev-queue-img {
   height: 35px;
+}
+
+#q-charger {
+  height: 20px;
 }

@@ -47,10 +47,12 @@
 <% elsif @my_ongoing_queueing and @my_turn %>
 <!-- If the user is queueing... and there is NOT a available post for the user -->
 
-  <div class="ev-card d-flex justify-content-between">
-    <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
-  </div>
-  <!-- REMOVE ME FROM THE QUEUE if that is a wish-->
+  <%= simple_form_for (@my_ongoing_queueing) do |f| %>
+    <div class='ev-card d-flex justify-content-between' >
+      <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
+      <div><%= f.submit 'Remove me from the queue', method: :patch %></div>
+    </div>
+  <% end %>
 
   <%= simple_form_for (@charging_session) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
@@ -69,10 +71,13 @@
 <% elsif @my_ongoing_queueing %>
   <!-- If the user is queueing... and there is NOT a available post yet for the user -->
 
-  <div class="ev-card d-flex justify-content-between">
-    <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
-  </div>
-  <!-- REMOVE ME FROM THE QUEUE -->
+  <%= simple_form_for (@my_ongoing_queueing) do |f| %>
+    <div class='ev-card d-flex justify-content-between' >
+      <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
+      <div><%= f.submit 'Remove me from the queue', method: :patch %></div>
+    </div>
+  <% end %>
+
 
 <% elsif !@no_queue or @available_posts.empty? %>
 <!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->

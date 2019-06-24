@@ -18,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def my_number_in_queue
-    # should never show/use 999 but for done for safety
+    # should never show/use 999 but done for safety
     return 999 if my_place_in_queue.nil?
 
     my_place_in_queue + 1
