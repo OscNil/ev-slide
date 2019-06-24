@@ -5,7 +5,7 @@ class QueueingsController < ApplicationController
     @queueing.start_time = Time.now.utc
 
     if @queueing.save
-      redirect_to authenticated_root_path, notice: "queueing creation successfully"
+      redirect_to authenticated_root_path
     else
       redirect_to authenticated_root_path, alert: "issue with queueing creation"
     end
@@ -18,7 +18,7 @@ class QueueingsController < ApplicationController
     @queueing.end_time = Time.now.utc
 
     if @queueing.save
-      redirect_to authenticated_root_path, notice: "charging updated successfully"
+      redirect_to authenticated_root_path
     else
       redirect_to authenticated_root_path, alert: "issue with charging update"
     end

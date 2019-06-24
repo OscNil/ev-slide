@@ -1,9 +1,9 @@
 <div id="header">
   <div class="center">
     <div id="app_name">EV SLIDE</div>
-    <%= image_tag "car.png", height: '75', width: '75' %>
+    <%= image_tag "car.png", height: '75' %>
   </div>
   <div class="push">
-    <%= link_to image_tag("logout.png", height: '40', width: '40', border: 0), destroy_user_session_path, method: :delete %>
+    <%= link_to image_tag("logout.png", class: "log-out-btn"), destroy_user_session_path, method: :delete %>
   </div>
 </div>
