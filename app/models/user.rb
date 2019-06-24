@@ -18,6 +18,7 @@ class User < ApplicationRecord
   end
 
   def my_number_in_queue
+    # should never show/use 999 but for done for safety
     return 999 if my_place_in_queue.nil?
 
     my_place_in_queue + 1
@@ -32,5 +33,4 @@ class User < ApplicationRecord
     my_queueing = queue_of_users.where(id: id)
     queue_of_users.find_index { |x| x == my_queueing.first }
   end
-
 end

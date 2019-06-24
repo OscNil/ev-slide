@@ -38,7 +38,7 @@
   </div>
 
 <% elsif @my_ongoing_queueing and @my_turn %>
-<!-- If the user is queueing... and there is NOT a available slot for the user -->
+<!-- If the user is queueing... and there is NOT a available post for the user -->
 
   <div class="ev-card d-flex justify-content-between">
     <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
@@ -60,7 +60,7 @@
 
 
 <% elsif @my_ongoing_queueing %>
-  <!-- If the user is queueing... and there is NOT a available slot yet for the user -->
+  <!-- If the user is queueing... and there is NOT a available post yet for the user -->
 
   <div class="ev-card d-flex justify-content-between">
     <p>Queueing - my place in queue: </p><%= @my_number_in_queue %>
