@@ -7,12 +7,12 @@ let mins;
 let seconds;
 
 let start_time = document.querySelector('#starting-time').innerHTML.split(':');
-console.log("start time " +start_time);
+// console.log("start time " +start_time);
 
 function get_time_status () {
 // Grab the time left
   time_status = document.querySelector('.time-status').innerText.split(':');
-  console.log('Time-status: ' + time_status);
+  // console.log('Time-status: ' + time_status);
 }
 get_time_status();
 
@@ -71,8 +71,8 @@ const curr_clock = document.querySelector('.fa-clock');
       let start_time_seconds = start_hour + start_minute + start_second;
       let time_now_seconds = ((mins_now * 60) + parseFloat(seconds_now));
 
-      console.log('Start time seconds: ' + start_time_seconds);
-      console.log('Get time seconds: ' + time_now_seconds);
+      // console.log('Start time seconds: ' + start_time_seconds);
+      // console.log('Get time seconds: ' + time_now_seconds);
 
       // Check if elapsed time is less than four hours
       if ( start_time_seconds >= time_now_seconds) {
@@ -92,7 +92,6 @@ const curr_clock = document.querySelector('.fa-clock');
           mins = 59;
         }
 
-        // if (mins === 9 || mins === 8 || mins === 7|| mins === 6 || mins === 5 || mins === 4 || mins === 3 || mins === 2 || mins === 1){
         if (mins < 10) {
           mins = '0' + mins
         }
