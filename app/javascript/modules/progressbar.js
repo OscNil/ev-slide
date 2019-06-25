@@ -12,16 +12,31 @@ get_time_status();
 
 setColor();
 // Create progress bar
+let count = 0;
+let begin_state = 0;
 var ProgressBar = require('progressbar.js');
 var bar = new ProgressBar.Circle('#donut', {
   strokeWidth: 12,
   easing: 'easeInOut',
-  duration: 240,
+  duration: 1000,
   color,
   svgStyle: null,
-  // step: (state, circle) => {
-  //   bar.path.setAttribute('stroke', state.color);
-  // }
+  step: (state, circle) => {
+
+    if(count > 0 && count < 2){
+      begin_state = state.offset;
+    }
+      count += 1;
+    let decimal = Math.round(state.offset / parseFloat(begin_state) * 1000, 0.5)
+     if (decimal == 0) {
+      color = "rgb(255, 63, 63)"
+    } else if(decimal <= 125 && decimal > 0){
+      color = "rgb(246,142,79)"
+    } else {
+      color = "rgb(50,195,178)"
+    }
+    circle.path.setAttribute('stroke', color);
+  }
 });
 
 const clock = document.querySelector('.time-status');
@@ -50,7 +65,6 @@ function calcStatus() {
 }
 function setColor() {
   calcStatus();
-  // step: function(state, circle) {
     if (status < -0.99999999999){
       color = "rgb(198, 63, 63)";
       status = -1;
@@ -61,8 +75,8 @@ function setColor() {
     else{
       color = "rgb(50,195,178)";
     }
-  // }
-}
+  }
+
 
 function setDate() {
   // Grab current time
@@ -111,7 +125,7 @@ function setDate() {
       clock.innerText = hours+':'+mins+':'+seconds;
     }
     date = new Date();
-    setStatus();
+    calcStatus();
 
   } else {
     let overdue_seconds = time_now_seconds - start_time_seconds;
@@ -136,8 +150,8 @@ function setDate() {
     {
       clock.innerText = hours_over+':'+minutes_over+':'+seconds_over;
     }
-    status = 1;
-    color = "rgb(198, 63, 63)";
+    // status = 1;
+    // color = "rgb(198, 63, 63)";
   }
   // Update current time
   if (minute_now < 10 ){
@@ -151,5 +165,4 @@ function setDate() {
   curr_clock.innerText = ' ' + hour_now + ':' + minute_now + ':' + seconds_now
 
   bar.animate(-(status))  ;  // Number from 0.0 to 1.0
-
 }
