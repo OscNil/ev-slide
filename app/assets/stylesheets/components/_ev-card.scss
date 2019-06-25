@@ -1,11 +1,13 @@
 .ev-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 1rem !important;
   border: $border;
   border-radius: 5px;
   box-shadow: $box-shadow;
-  align-items: center;
   padding: 0 1rem 0 1rem;
-  height: 9%;
+  height: 11%;
 }
 
 #charging-post-dropdown {
@@ -62,6 +64,7 @@ select {
   p {
     margin-bottom: 0px;
   }
+
 }
 #acdc {
   font-family: $body-font;
@@ -100,5 +103,28 @@ select {
 }
 #reg-plate {
   font-family: courier;
+  width: 110px;
   margin-bottom: 0px;
+  border: solid black;
+  background-color: white;
+  padding: 4px;
+  border-radius: 5px;
+  border-width: 2px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+}
+.ev-flex-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+#ev-name {
+//  border: solid black;
+}
+.ev-empty {
+  // border: solid black;
 }
