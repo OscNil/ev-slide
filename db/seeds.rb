@@ -130,56 +130,49 @@ puts "Current time UTC: #{rolling_timestamp}"
 
 
 session_1 = ChargingSession.create!(charging_post_id: 1,
-                                   user_id: user_1.id,
-                                   start_time: rolling_timestamp - (2 * 3600),
-                                   end_time: rolling_timestamp - (3600))
-puts 'Charging session 1 created! (Start: 2 hours ago. End: 1 hour ago.)'
+                                   user_id: user_7.id,
+                                   start_time: rolling_timestamp - (200),
+                                   end_time: nil)
+puts 'Charging session 1 created! (Start: 200 seconds ago.)'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
-                                   user_id: user_2.id,
+                                   user_id: user_8.id,
                                    # 14355 if 4 hours, 180 if 4 minutes
                                    start_time: rolling_timestamp - (180),
                                    end_time: nil)
-puts 'Charging session 2 created! (Start: Almost 3 hours ago!!!. End: one minute left)'
+puts 'Charging session 2 created! (Start: 180 seconds ago.)'
 
 session_3 = ChargingSession.create!(charging_post_id: 3,
                                    user_id: user_3.id,
                                    # 80 * 60 when four hours, 60 when 4 minutes
                                    start_time: rolling_timestamp - (60),
                                    end_time: nil)
-puts 'Charging session 3 created! (Start: 80 minutes ago. End: three minutes left)'
+puts 'Charging session 3 created! (Start: 60 seconds ago.)'
 
 session_4 = ChargingSession.create!(charging_post_id: 4,
                                    user_id: user_4.id,
                                    # 3600 when four hours, 120 when 4 minutes
                                    start_time: rolling_timestamp - (120),
                                    end_time: nil)
-puts 'Charging session 4 created! (Start: 1 hour ago. End: 2 minutes left)'
+puts 'Charging session 4 created! (Start: 120 seconds ago.)'
 
 session_5 = ChargingSession.create!(charging_post_id: 5,
                                    user_id: user_5.id,
                                    # 0.5 * 3600 when four hours, 100 when 4 minute
                                    start_time: rolling_timestamp - (100),
                                    end_time: nil)
-puts 'Charging session 5 created! (Start: Half an hours ago. End: still ongoing...)'
-
-session_5 = ChargingSession.create!(charging_post_id: 6,
-                                   user_id: user_6.id,
-                                   # 0.5 * 3600when four hours, 150 when 4 minutes
-                                   start_time: rolling_timestamp - (150),
-                                   end_time: nil)
-puts 'Charging session 6 created! (Start: Half an hours ago. End: still ongoing...)'
+puts 'Charging session 5 created! (Start: 100 seconds ago.)'
 
 puts 'All charging sessions created successfully!'
 
 
-queueing_1 = Queueing.create!(user_id: user_7.id,
-                              start_time: rolling_timestamp - (0.5 * 3600),
-                              end_time: nil)
-puts 'Queueing no 1 created! (Start: Half an hours ago. End: still ongoing...)'
+# queueing_1 = Queueing.create!(user_id: user_7.id,
+#                               start_time: rolling_timestamp - (0.5 * 3600),
+#                               end_time: nil)
+# puts 'Queueing no 1 created! (Start: Half an hours ago. End: still ongoing...)'
 
-queueing_2 = Queueing.create!(user_id: user_8.id,
-                              start_time: rolling_timestamp - (0.45 * 3600),
-                              end_time: nil)
-puts 'Queueing no 2 created! (Start: Less than half an hours ago. End: still ongoing...)'
-puts 'All queueings created successfully!'
+# queueing_2 = Queueing.create!(user_id: user_8.id,
+#                               start_time: rolling_timestamp - (0.45 * 3600),
+#                               end_time: nil)
+# puts 'Queueing no 2 created! (Start: Less than half an hours ago. End: still ongoing...)'
+# puts 'All queueings created successfully!'

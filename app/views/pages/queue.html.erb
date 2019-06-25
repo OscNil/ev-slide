@@ -13,11 +13,11 @@
         <div>
           <!-- IF there ARE available charging posts... -->
         <% if @available_posts.count > idx %>
-          <!-- ...calculate the time remaining until scheduled checkout... -->
+          <!-- ...display the available charging post number... -->
           <%= image_tag "charger.png", id: "q-charger" %> <%= @available_posts[idx].id %>
         <% else %>
-          <!-- ...ELSE just put it to zero -->
-          time remaining
+          <!-- ...ELSE display the estimated amount of time remaining-->
+          <%= User.users_in_queue_in_order %>
           <% if user.id == current_user.id %>
 
           <% else %>
