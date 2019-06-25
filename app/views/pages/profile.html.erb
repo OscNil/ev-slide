@@ -38,10 +38,15 @@
 
   <p id="starting-time"><%= (@session.start_time).strftime("%H:%M:%S") %>
   <div class="activity-field">
-    <p><i class="fas fa-clock"></i> &nbsp&nbsp&nbsp <i class="fas fa-hourglass-end"></i><%= (@session.start_time + 240).strftime("%H:%M:%S") %></p>
+    <p><i class="fas fa-clock"></i> &nbsp&nbsp&nbsp
+      <i class="fas fa-hourglass-end"></i>&nbsp<%= (@session.start_time + 240).strftime("%H:%M:%S") %></p>
     <div id="donut">
     </div>
-    <p class="time-status"><i class="fas fa-hourglass-start"></i><%= @session.time_left_string %></p>
+
+    <div class="progress-clock">
+      <i class="fas fa-hourglass-start"></i> &nbsp&nbsp
+      <p class="time-status"><%= @session.time_left_string %></p>
+    </div>
   </div>
 
 <% elsif @my_ongoing_queueing and @my_turn %>

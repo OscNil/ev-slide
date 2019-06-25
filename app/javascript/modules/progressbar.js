@@ -36,9 +36,9 @@ function get_time_status () {
 function setStatus() {
   get_time_status();
   // Calc the minutes to get the status of the progress bar
-  hours = parseFloat(time_status[1]);
-  mins = parseFloat(time_status[2]);
-  seconds = parseFloat(time_status[3]);
+  hours = parseFloat(time_status[0]);
+  mins = parseFloat(time_status[1]);
+  seconds = parseFloat(time_status[2]);
   let secs = ((hours * 3600) + (mins * 60) + seconds);
 
   // Change between 240 and 3600 depending on 4 minutes or hours
@@ -101,7 +101,7 @@ function setDate() {
     }
     else
     {
-      clock.innerText = 'Remaining time: ' + hours+':'+mins+':'+seconds;
+      clock.innerText = hours+':'+mins+':'+seconds;
     }
     date = new Date();
     setStatus();
@@ -123,11 +123,11 @@ function setDate() {
       seconds_over = '0' + seconds_over;
     }
     if ( hours_over === 0) {
-    clock.innerText = 'Overdue: '+ minutes_over+':'+seconds_over;
+    clock.innerText = minutes_over+':'+seconds_over;
     }
     else
     {
-      clock.innerText = 'Overdue: '+ hours_over+':'+minutes_over+':'+seconds_over;
+      clock.innerText = hours_over+':'+minutes_over+':'+seconds_over;
     }
     status = 1;
     color = 'red';
@@ -137,7 +137,11 @@ function setDate() {
     minute_now = '0' + minute_now
   }
 
-  curr_clock.innerText = ' ' + hour_now + ':' + minute_now
+  if (seconds_now < 10 ){
+    seconds_now = '0' + seconds_now
+  }
+
+  curr_clock.innerText = ' ' + hour_now + ':' + minute_now + ':' + seconds_now
 
   bar.animate(-(status))  ;  // Number from 0.0 to 1.0
 
