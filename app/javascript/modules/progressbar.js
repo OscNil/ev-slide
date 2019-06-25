@@ -28,13 +28,22 @@ var bar = new ProgressBar.Circle('#donut', {
     }
       count += 1;
     let decimal = Math.round(state.offset / parseFloat(begin_state) * 1000, 0.5)
-     if (decimal == 0) {
-      color = "rgb(255, 63, 63)"
+    if (decimal > 125) {
+      color = "rgb(50,195,178)"
     } else if(decimal <= 125 && decimal > 0){
       color = "rgb(246,142,79)"
     } else {
-      color = "rgb(50,195,178)"
+      color = "rgb(255, 63, 63)"
+      decimal = 1;
     }
+
+    // if (decimal == 0) {
+    //   color = "rgb(255, 63, 63)"
+    // } else if(decimal <= 125 && decimal > 0){
+    //   color = "rgb(246,142,79)"
+    // } else {
+    //   color = "rgb(50,195,178)"
+    // }
     circle.path.setAttribute('stroke', color);
   }
 });
