@@ -25,30 +25,13 @@
 }
 
 #ev-leave-queue-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 320px;
-}
-#ev-leave-queue-p{
-  margin-bottom: 0px;
+//  align-items: center;
+//  justify-content: space-between;
+//  width: 320px;
 }
 
-.ev-queue-button {
-  background-color: $ev-green;
-  color: black;
-  border-radius: 18px;
-  width: 50%;
-  height: 45px;
-  margin: 2px 5%;
-}
-.ev-leave-queue-button {
-  background-color: $ev-orange;
-  color: black;
-  border-radius: 18px;
-  width: 40%;
-  height: 45px;
-  margin: 2px 5%;
+#ev-leave-queue-p{
+  margin-bottom: 0px;
 }
 
 .ev-queue-img {
