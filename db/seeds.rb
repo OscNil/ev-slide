@@ -137,28 +137,24 @@ puts 'Charging session 1 created! (Start: 200 seconds ago.)'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
                                    user_id: user_8.id,
-                                   # 14355 if 4 hours, 180 if 4 minutes
                                    start_time: rolling_timestamp - (180),
                                    end_time: nil)
 puts 'Charging session 2 created! (Start: 180 seconds ago.)'
 
 session_3 = ChargingSession.create!(charging_post_id: 3,
                                    user_id: user_3.id,
-                                   # 80 * 60 when four hours, 60 when 4 minutes
                                    start_time: rolling_timestamp - (60),
                                    end_time: nil)
 puts 'Charging session 3 created! (Start: 60 seconds ago.)'
 
 session_4 = ChargingSession.create!(charging_post_id: 4,
                                    user_id: user_4.id,
-                                   # 3600 when four hours, 120 when 4 minutes
                                    start_time: rolling_timestamp - (120),
                                    end_time: nil)
 puts 'Charging session 4 created! (Start: 120 seconds ago.)'
 
 session_5 = ChargingSession.create!(charging_post_id: 5,
                                    user_id: user_5.id,
-                                   # 0.5 * 3600 when four hours, 100 when 4 minute
                                    start_time: rolling_timestamp - (100),
                                    end_time: nil)
 puts 'Charging session 5 created! (Start: 100 seconds ago.)'
