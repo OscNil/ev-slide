@@ -96,7 +96,7 @@
 
 
   <%= simple_form_for (@charging_session) do |f| %>
-    <div class='ev-card d-flex'>
+    <div class='ev-card d-flex justify-content-between'>
       <div id="outlet-div"><%= image_tag "charger.png", class: "charger" %><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
       <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
       <div>
