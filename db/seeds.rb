@@ -131,33 +131,33 @@ puts "Current time UTC: #{rolling_timestamp}"
 
 session_1 = ChargingSession.create!(charging_post_id: 1,
                                    user_id: user_7.id,
-                                   start_time: rolling_timestamp,
+                                   start_time: rolling_timestamp - 10,
                                    end_time: nil)
-puts 'Charging session 1 created! (Start: 200 seconds ago.)'
+puts 'Charging session 1 created!'
 
 session_2 = ChargingSession.create!(charging_post_id: 2,
                                    user_id: user_8.id,
-                                   start_time: rolling_timestamp,
+                                   start_time: rolling_timestamp - 8,
                                    end_time: nil)
-puts 'Charging session 2 created! (Start: 180 seconds ago.)'
+puts 'Charging session 2 created! '
 
 session_3 = ChargingSession.create!(charging_post_id: 3,
                                    user_id: user_3.id,
-                                   start_time: rolling_timestamp,
+                                   start_time: rolling_timestamp - 5,
                                    end_time: nil)
-puts 'Charging session 3 created! (Start: 60 seconds ago.)'
+puts 'Charging session 3 created!'
 
 session_4 = ChargingSession.create!(charging_post_id: 4,
                                    user_id: user_4.id,
-                                   start_time: rolling_timestamp,
+                                   start_time: rolling_timestamp - 2,
                                    end_time: nil)
-puts 'Charging session 4 created! (Start: 120 seconds ago.)'
+puts 'Charging session 4 created! '
 
 session_5 = ChargingSession.create!(charging_post_id: 5,
                                    user_id: user_5.id,
                                    start_time: rolling_timestamp,
                                    end_time: nil)
-puts 'Charging session 5 created! (Start: 100 seconds ago.)'
+puts 'Charging session 5 created! '
 
 puts 'All charging sessions created successfully!'
 
