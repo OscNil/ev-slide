@@ -46,7 +46,7 @@ function setStatus() {
   status = -1 + ( secs / (240));
   if (status < -0.99999999999){
     color = 'red';
-    status = -1
+    status = -1;
   }
   else if (status < -0.875){
     color = 'yellow';
