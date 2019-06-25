@@ -1,4 +1,5 @@
 class ChargingSessionsController < ApplicationController
+  before_action :authenticate_user!
   def create
     unless ChargingSession.where(charging_post_id: params[:charging_post_id], end_time: nil).empty?
       flash.now[:notice] = "Charger taken!"
