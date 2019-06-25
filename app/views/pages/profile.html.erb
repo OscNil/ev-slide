@@ -45,7 +45,7 @@
   </div>
 
 <% elsif @my_ongoing_queueing and @my_turn %>
-<!-- If the user is queueing... and there is NOT a available post for the user -->
+<!-- If the user is queueing... and there IS an available post for the user -->
 
   <%= simple_form_for (@my_ongoing_queueing) do |f| %>
     <div class='ev-card d-flex justify-content-between' >
@@ -65,11 +65,10 @@
       </div>
     </div>
   <% end %>
-  <!-- REMOVE ME FROM THE QUEUE when session taken-->
 
 
 <% elsif @my_ongoing_queueing %>
-  <!-- If the user is queueing... and there is NOT a available post yet for the user -->
+  <!-- If the user is queueing... and there is NOT an available post yet for the user -->
   <div class='ev-card d-flex justify-content-between' >
     <%= simple_form_for (@my_ongoing_queueing) do |f| %>
     <div id='ev-leave-queue-div'>
@@ -101,7 +100,7 @@
       <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
       <div>
        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-       <i class="fas fa-bolt"></i>
+       &nbsp&nbsp<i class="fas fa-bolt"></i>&nbsp&nbsp
        <% end %>
       </div>
     </div>
