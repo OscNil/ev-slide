@@ -24,6 +24,8 @@ class PagesController < ApplicationController
   end
 
   def queue
+    @users_in_queue_in_order = User.users_in_queue_in_order
+    @charging_sessions_start_times = ChargingSession.ongoing_start_times
   end
 
   def find_available_posts

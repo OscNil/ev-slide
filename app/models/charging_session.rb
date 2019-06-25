@@ -3,6 +3,17 @@ class ChargingSession < ApplicationRecord
   belongs_to :user
   validates :charging_post_id, presence: true
   after_create :stop_queueing
+  # scope :ongoing_sessions_by_start_time, -> { where(end_time: nil).order(start_time: :asc) }
+
+  def self.ongoing_sessions_by_start_time
+    # Array of Charging Session INstances
+    where(end_time: nil).order(start_time: :asc)
+  end
+
+  def self.ongoing_start_times
+    # Array of DateTime objects
+    ongoing_sessions_by_start_time.map(&:start_time)
+  end
 
   def time_left_string
     # Change 3600 to 60 depending on if we want hours or minutes
