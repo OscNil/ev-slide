@@ -10,7 +10,7 @@ let start_time = document.querySelector('#starting-time').innerHTML.split(':');
 
 get_time_status();
 
-setStatus();
+setColor();
 // Create progress bar
 var ProgressBar = require('progressbar.js');
 var bar = new ProgressBar.Circle('#donut', {
@@ -18,7 +18,10 @@ var bar = new ProgressBar.Circle('#donut', {
   easing: 'easeInOut',
   duration: 240,
   color,
-  svgStyle: null
+  svgStyle: null,
+  // step: (state, circle) => {
+  //   bar.path.setAttribute('stroke', state.color);
+  // }
 });
 
 const clock = document.querySelector('.time-status');
@@ -33,7 +36,7 @@ function get_time_status () {
   time_status = document.querySelector('.time-status').innerText.split(':');
 }
 
-function setStatus() {
+function calcStatus() {
   get_time_status();
   // Calc the minutes to get the status of the progress bar
   hours = parseFloat(time_status[0]);
@@ -44,17 +47,21 @@ function setStatus() {
   // Change between 240 and 3600 depending on 4 minutes or hours
   // Also change in appl_controller and charg_session
   status = -1 + ( secs / (240));
-  if (status < -0.99999999999){
-    color = 'red';
-    status = -1;
-  }
-  else if (status < -0.875){
-    color = "rgb(246,142,79)";
-  }
-  else{
-    color = "rgb(50,195,178)";
-  }
-
+}
+function setColor() {
+  calcStatus();
+  // step: function(state, circle) {
+    if (status < -0.99999999999){
+      color = "rgb(198, 63, 63)";
+      status = -1;
+    }
+    else if (status < -0.875){
+      color = "rgb(246,142,79)";
+    }
+    else{
+      color = "rgb(50,195,178)";
+    }
+  // }
 }
 
 function setDate() {
@@ -130,7 +137,7 @@ function setDate() {
       clock.innerText = hours_over+':'+minutes_over+':'+seconds_over;
     }
     status = 1;
-    color = 'red';
+    color = "rgb(198, 63, 63)";
   }
   // Update current time
   if (minute_now < 10 ){
