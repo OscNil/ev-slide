@@ -6,7 +6,8 @@ class ChargingSessionsController < ApplicationController
 
       @session = ChargingSession.new(session_params)
       @session.user = current_user
-      @session.start_time = Time.now
+      @session.start_time = Time.now.utc
+      raise
 
       if @session.save
         redirect_to authenticated_root_path
