@@ -5,15 +5,19 @@
 <div class='ev-card d-flex justify-content-between' >
   <div><%= image_tag @user.photo, class: "avatar" %></div>
   <div class='ev-flex-card'>
-    <div id='ev-name'><%= @user.first_name %> <%= @user.last_name %></div>
-    <div id='points'>
-      <div><p id='acdc'>AC/DC</p></div>
-      <% if @user.points >= 0 %>
-        <div id='plus_points'><p>+<%= @user.points %></p></div>
-      <% else %>
-        <div id='minus_points'><p><%= @user.points %></p></div>
-      <% end %>
-    </div>
+    <div id='ev-name'><%= @user.first_name %></div>
+    <div id='points' class='d-flex justify-content-between'>
+      <div id="acdc-div">
+        <%= image_tag 'acdc.png', class: "avatar" %>
+      </div>
+      <div>
+        <% if @user.points >= 0 %>
+          <p>+<%= @user.points %></p>
+        <% else %>
+          <%= @user.points %>
+        <% end %>
+      </div>
+  </div>
   </div>
 </div>
 
