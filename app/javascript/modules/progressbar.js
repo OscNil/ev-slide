@@ -49,10 +49,10 @@ function setStatus() {
     status = -1;
   }
   else if (status < -0.875){
-    color = 'yellow';
+    color = "rgb(246,142,79)";
   }
   else{
-    color = 'green';
+    color = "rgb(50,195,178)";
   }
 
 }
