@@ -39,5 +39,27 @@
 }
 
 #q-charger {
-  height: 20px;
+  height: 25px;
+}
+#ev-queue-number {
+  position: absolute;
+  padding-left: 30px;
+
+  // width: 35px;
+  // height: 35px;
+  // text-align: center;
+  // border: 2px solid $ev-green;
+  // box-shadow: $accent-box-shadow;
+  // padding-top: 4px;
+}
+#ev-queue-pic {
+  position: relative;
+}
+.ticket {
+  height: 38px;
+  box-shadow: $accent-box-shadow;
+}
+#ev-p-queue-number {
+  font-weight: bold;
+  margin-bottom: 0px;
 }
