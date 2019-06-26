@@ -10,6 +10,10 @@
   height: 12%;
 }
 
+#high-score-card {
+  height: 11%;
+}
+
 #charging-post-dropdown {
   margin-top: 1rem;
   margin-bottom: auto;
@@ -45,17 +49,20 @@ select {
 .charger {
   width: 50px;
 }
+
 .btn-success {
   background-color: $ev-green;
   border-radius: 10px;
   height: 35px;
 }
+
 .btn-warning {
   background-color: $ev-orange;
   //width: 50px;
   border-radius: 10px;
   height: 35px;
 }
+
 #points {
   display: flex;
   align-items: center;
@@ -71,6 +78,7 @@ select {
 #acdc {
   // padding: 1rem;
 }
+
 #plus_points {
   width: 52px;
   height: 32px;
@@ -100,6 +108,7 @@ select {
     padding-top: 5px;
   }
 }
+
 #reg-plate {
   font-family: courier;
   width: 110px;
@@ -121,12 +130,14 @@ select {
   width: 70%;
 //  border: solid green;
 }
+
 #ev-start-charging-button {
   display: flex;
   justify-content: space-between;
 //  border: solid black;
   width: 120px;
 }
+
 .ev-spacing {
   padding-left: 10px;
 }

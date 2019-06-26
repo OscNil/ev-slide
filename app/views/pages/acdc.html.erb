@@ -3,8 +3,8 @@
 <% end %>
 
 <% @top_users_in_acdc_order.each_with_index do | user, idx | %>
-  <div class='ev-card d-flex justify-content-between'>
-    <div><%= image_tag 'halo_yellow.png', class: "avatar halo" %><%= image_tag user.photo, class: "avatar" %></div>
+  <div class='ev-card d-flex justify-content-between' id="high-score-card">
+    <div><%= image_tag 'halo_yellow.png', class: "avatar halo" %><%= image_tag user.photo, class: "avatar avatar-high-score" %></div>
     <div class="d-flex justify-content-between list-for-name">
       <div><%= user.first_name %> <%= user.last_name %></div>
       <div><%= user.points %></div>
@@ -15,8 +15,8 @@
 <div><hr class="acdc-ruler"></div>
 
 <% @bottom_users_in_acdc_order.each_with_index do | user, idx | %>
-  <div class='ev-card d-flex justify-content-between'>
-    <div><%= image_tag 'horns.png', class: "avatar horns" %><%= image_tag user.photo, class: "avatar" %></div>
+  <div class='ev-card d-flex justify-content-between' id="high-score-card">
+    <div><%= image_tag 'horns.png', class: "avatar horns" %><%= image_tag user.photo, class: "avatar avatar-high-score" %></div>
     <div class="d-flex justify-content-between list-for-name">
       <div><%= user.first_name %> <%= user.last_name %></div>
       <div><%= user.points %></div>
