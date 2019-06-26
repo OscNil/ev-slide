@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   # get "profile", to: 'pages#profile'
   get "queue", to: 'pages#queue'
+  get "acdc", to: 'pages#acdc'
 end

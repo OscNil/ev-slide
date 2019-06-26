@@ -1,7 +1,7 @@
 <div class="navbar navbar-lewagon fixed-bottom">
-
-    <div class="navbar-item">
+    <div class="navbar-item pl-3 pr-4">
       <%= link_to authenticated_root_path, id: "navbar-me" do %>
+
         <% if action_name == "profile" %>
           <%= image_tag "me_orange.png", class: "navbar-img" %>
         <% else %>
@@ -22,8 +22,11 @@
 
     <div class="navbar-item">
       <%= link_to authenticated_root_path, id: "navbar-view" do %>
-      <%= image_tag "charging_grey.png", class: "navbar-img" %>
+        <% if action_name == "acdc" %>
+          <%= image_tag "acdc_orange.png", class: "navbar-img" %>
+        <% else %>
+          <%= image_tag "acdc_grey.png", class: "navbar-img" %>
+        <% end %>
       <% end %>
     </div>
-
 </div>

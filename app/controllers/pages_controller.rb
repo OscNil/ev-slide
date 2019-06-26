@@ -28,6 +28,9 @@ class PagesController < ApplicationController
     @charging_sessions_start_times = ChargingSession.ongoing_start_times
   end
 
+  def acdc
+  end
+
   def find_available_posts
     @available_posts = ChargingPost.available_posts
   end
