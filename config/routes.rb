@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :charging_sessions, only: [:create, :update]
   resources :queueings, only: [:read, :create, :update]
 
-  get "profile", to: 'pages#profile'
+  # get "profile", to: 'pages#profile'
   get "queue", to: 'pages#queue'
   get "acdc", to: 'pages#acdc'
 end
