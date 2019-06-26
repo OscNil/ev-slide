@@ -2,12 +2,13 @@
 <%= content_tag :div, msg, :id => "flash" if msg.length > 0 %>
 <% end %>
 
-<div class='ev-card d-flex justify-content-between'>
-  <div><%= image_tag current_user.photo, class: "avatar" %></div>
-  <div class="d-flex justify-content-between list-for-name">
-    <div><%= current_user.first_name %> <%= current_user.last_name %></div>
-    <div>
+<% @users_in_acdc_order.each_with_index do | user, idx | %>
+  <div class='ev-card d-flex justify-content-between'>
+    <div><%= image_tag user.photo, class: "avatar" %></div>
+    <div class="d-flex justify-content-between list-for-name">
+      <div><%= user.first_name %> <%= user.last_name %></div>
+      <div><%= user.points %></div>
     </div>
   </div>
-</div>
+<% end %>
 

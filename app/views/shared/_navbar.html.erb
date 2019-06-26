@@ -21,7 +21,7 @@
     </div>
 
     <div class="navbar-item">
-      <%= link_to authenticated_root_path, id: "navbar-view" do %>
+      <%= link_to acdc_path, id: "navbar-view" do %>
         <% if action_name == "acdc" %>
           <%= image_tag "acdc_orange.png", class: "navbar-img" %>
         <% else %>
