@@ -159,7 +159,7 @@ puts 'User 8 created!'
 
 user_9 = User.create!(password: '123456',
                       email: 'annea@ikea.com',
-                      photo: 'https://kitt.lewagon.c om/placeholder/users/annemff',
+                      photo: 'https://kitt.lewagon.com/placeholder/users/annemff',
                       first_name: 'Anne',
                       last_name: 'Hofmann',
                       car_plate: 'GGG 777',
