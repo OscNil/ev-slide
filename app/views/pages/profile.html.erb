@@ -25,7 +25,7 @@
 </div>
 
 <div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag 'car.png', class: "avatar" %></div>
+  <div><%= image_tag 'car_grey.png', class: "avatar" %></div>
   <div class='ev-flex-card'>
     <div><p id="reg-plate"><%= @user.car_plate %></p></div>
     <div class="ev-empty"></div>
@@ -41,9 +41,9 @@
     <div><%= image_tag "charger.png", class: "charger" %></div>
     <div class='ev-flex-card'>
       <div><%= @session.charging_post_id %></div>
-      <div>
-        <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning"  do %>
-          &nbsp&nbsp<i class="fas fa-bolt"></i>&nbsp&nbsp
+      <div id='ev-start-charging-button'>
+        <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning btn-flash"  do %>
+          <p>Stop <span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
         <% end %>
       </div>
     </div>
@@ -65,11 +65,11 @@
 <% elsif @my_ongoing_queueing and @my_turn %>
 <!-- If the user is queueing... and there IS an available post for the user -->
 
-
   <div class='ev-card d-flex justify-content-between' >
     <div><%= image_tag "queue_grey.png", class: "ev-queue-img" %></div>
     <div class='ev-flex-card'>
-      <div><%= @my_number_in_queue %></div>
+      <div id='ev-queue-pic'><%= image_tag "ticket_green.png", class: "ticket" %></div>
+      <div id='ev-queue-number'><p id='ev-p-queue-number'><%= @my_number_in_queue %></p></div>
       <div>
         <%= simple_form_for (@my_ongoing_queueing) do |f| %>
         <%= f.submit 'Leave queue', method: :patch, class: "btn btn-warning" %>
@@ -84,9 +84,11 @@
       <div class='ev-flex-card'>
         <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
         <div>
-         <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-         &nbsp&nbsp<i class="fas fa-bolt"></i>&nbsp&nbsp
+          <div id='ev-start-charging-button'>
+         <%= button_tag(type: 'submit', class: "btn btn-success btn-flash") do %>
+            <p>Start<span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
          <% end %>
+         </div>
         </div>
       </div>
     </div>
@@ -125,9 +127,11 @@
       <div id="outlet-div"><%= image_tag "charger.png", class: "charger" %><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
       <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
       <div>
-       <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-       &nbsp&nbsp<i class="fas fa-bolt"></i>&nbsp&nbsp
+      <div id='ev-start-charging-button'>
+       <%= button_tag(type: 'submit', class: "btn btn-success btn-flash") do %>
+       <p>Start<span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
        <% end %>
+       </div>
       </div>
     </div>
   <% end %>
