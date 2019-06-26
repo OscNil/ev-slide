@@ -2,33 +2,30 @@
 <%= content_tag :div, msg, :id => "flash" if msg.length > 0 %>
 <% end %>
 
-<!-- Check if there is a queue. TO BE IMPLEMENTED -->
-<% if true %>
-  <!-- If there is a queue... -->
-  <% @users_in_queue_in_order.each_with_index do | user, idx | %>
-    <div class='ev-card d-flex ev-card-<%= user.id %> justify-content-between
-        <% if user.id == current_user.id %>
-          <%= " me-card" %>
-          <% if @available_posts.count > idx %>
-            <%= " me-card-charger-available" %>
-          <% end %>
-        <% end %>'>
-      <div><%= image_tag user.photo, class: "avatar" %></div>
-      <div class="d-flex justify-content-between list-for-name">
-        <div><%= user.first_name %> <%= user.last_name %></div>
-        <div>
-          <!-- IF there ARE available charging posts... -->
+<!-- If there is a queue... -->
+<% @users_in_queue_in_order.each_with_index do | user, idx | %>
+  <div class='ev-card d-flex justify-content-between ev-card-<%= user.id %>
+      <% if user.id == current_user.id %>
+        <%= " me-card" %>
         <% if @available_posts.count > idx %>
-          <!-- ...display the available charging post number... -->
-          <%= image_tag "charger.png", id: "q-charger" %> <%= @available_posts[idx].id %>
-        <% else %>
-          <!-- ...ELSE display the estimated amount of time remaining-->
-          <%= Time.at((@charging_sessions_start_times[idx] + 240) - Time.now).strftime("%M:%S") %>
+          <%= " me-card-charger-available" %>
         <% end %>
-        </div>
+      <% end %>'>
+    <div><%= image_tag user.photo, class: "avatar" %></div>
+    <div class="d-flex justify-content-between list-for-name">
+      <div><%= user.first_name %> <%= user.last_name %></div>
+      <div class="ev-info-<%= user.id %>">
+      <!-- IF there ARE available charging posts... -->
+      <% if @available_posts.count > idx %>
+        <!-- ...display the available charging post number... -->
+        <%= image_tag "charger.png", id: "q-charger" %> <%= @available_posts[idx].id %>
+      <% else %>
+        <!-- ...ELSE display the estimated amount of time remaining-->
+        <%= Time.at((@charging_sessions_start_times[idx] + 240) - Time.now).strftime("%M:%S") %>
+      <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
 <% end %>
 
-  <%= javascript_pack_tag 'reload' %>
+<%= javascript_pack_tag 'reload' %>
