@@ -2,9 +2,21 @@
 <%= content_tag :div, msg, :id => "flash" if msg.length > 0 %>
 <% end %>
 
-<% @users_in_acdc_order.each_with_index do | user, idx | %>
+<% @top_users_in_acdc_order.each_with_index do | user, idx | %>
   <div class='ev-card d-flex justify-content-between'>
-    <div><%= image_tag user.photo, class: "avatar" %></div>
+    <div><%= image_tag 'halo_yellow.png', class: "avatar halo" %><%= image_tag user.photo, class: "avatar" %></div>
+    <div class="d-flex justify-content-between list-for-name">
+      <div><%= user.first_name %> <%= user.last_name %></div>
+      <div><%= user.points %></div>
+    </div>
+  </div>
+<% end %>
+
+<div><hr></div>
+
+<% @bottom_users_in_acdc_order.each_with_index do | user, idx | %>
+  <div class='ev-card d-flex justify-content-between'>
+    <div><%= image_tag 'horns.png', class: "avatar horns" %><%= image_tag user.photo, class: "avatar" %></div>
     <div class="d-flex justify-content-between list-for-name">
       <div><%= user.first_name %> <%= user.last_name %></div>
       <div><%= user.points %></div>
