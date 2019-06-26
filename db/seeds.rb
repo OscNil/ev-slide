@@ -48,7 +48,7 @@ user_3 = User.create!(password: '123456',
                       first_name: 'Lena',
                       last_name: 'Nigrell',
                       car_plate: 'GHI 789',
-                      points: -70)
+                      points: -10)
 puts 'User 3 created!'
 
 user_4 = User.create!(password: '123456',
@@ -90,12 +90,12 @@ user_7 = User.create!(password: '123456',
 puts 'User 7 created!'
 
 user_8 = User.create!(password: '123456',
-                      email: 'andreas@ikea.com',
-                      photo: 'https://kitt.lewagon.com/placeholder/users/amansson',
-                      first_name: 'Andreas',
-                      last_name: 'Månsson',
+                      email: 'gracy@ikea.com',
+                      photo: 'https://kitt.lewagon.com/placeholder/users/gracykantz',
+                      first_name: 'Gracy',
+                      last_name: 'Kantzabedian',
                       car_plate: 'NIT 851',
-                      points: 0)
+                      points: -70)
 
 puts 'User 8 created!'
 
