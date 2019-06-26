@@ -29,7 +29,7 @@ user_1 = User.create!(password: '123456',
                       first_name: 'Petra',
                       last_name: 'Elandersson',
                       car_plate: 'ABC 123',
-                      points: 6)
+                      points: 81)
 
 puts 'User 1 created!'
 
@@ -85,7 +85,7 @@ user_7 = User.create!(password: '123456',
                       first_name: 'Alan',
                       last_name: 'Caunt',
                       car_plate: 'III 999',
-                      points: 99)
+                      points: 29)
 
 puts 'User 7 created!'
 
