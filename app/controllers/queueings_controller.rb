@@ -1,4 +1,5 @@
 class QueueingsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @queueing = Queueing.new
     @queueing.user = current_user
