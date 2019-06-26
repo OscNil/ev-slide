@@ -2,34 +2,39 @@
   width: 60px;
   border-radius: 50%;
 }
-  .horns {
-    margin-bottom: -15px;
-  }
-  .halo {
-    margin-top: -30px;
-    margin-bottom: -21px;
-    margin-left: 2px;
-  }
+
+.avatar-high-score {
+  margin-top: -36px;
+  margin-bottom: -10px;
+  border-radius: 50%;
+}
+
+.horns {
+  margin-top: -64px;
+  margin-bottom: -15px;
+}
+
+.halo {
+  margin-top: -81px;
+  margin-bottom: -30px;
+  margin-left: 2px;
+}
+
 .avatar-large {
   width: 56px;
   border-radius: 50%;
 }
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
 .avatar-square {
   width: 46px;
   border-radius: 0px;
 //  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 //  border: white 1px solid;
-}
-.avatar-decoration {
-  width: 35px;
-  position: absolute;
-  left: 55px;
-  top: 35px;
-  z-index: 1;
 }
