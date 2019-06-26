@@ -29,7 +29,8 @@ class PagesController < ApplicationController
   end
 
   def acdc
-    @users_in_acdc_order = User.all.order(points: :desc)
+    @top_users_in_acdc_order = User.all.order(points: :desc).first(3)
+    @bottom_users_in_acdc_order = User.all.order(points: :asc).first(3).reverse
   end
 
   def find_available_posts

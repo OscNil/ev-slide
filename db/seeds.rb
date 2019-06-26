@@ -66,14 +66,14 @@ user_5 = User.create!(password: '123456',
                       first_name: 'Robert',
                       last_name: 'Andersson',
                       car_plate: 'FED 654',
-                      points: -60)
+                      points: -6)
 puts 'User 5 created!'
 
 user_6 = User.create!(password: '123456',
                       email: 'anton@ikea.com',
                       photo: 'https://kitt.lewagon.com/placeholder/users/atmosfeer',
-                      first_name: 'Anton',
-                      last_name: 'Svensson',
+                      first_name: 'Nicholas',
+                      last_name: 'Feer',
                       car_plate: 'IHG 987',
                       points: -98)
 
@@ -95,7 +95,7 @@ user_8 = User.create!(password: '123456',
                       first_name: 'Andreas',
                       last_name: 'Månsson',
                       car_plate: 'NIT 851',
-                      points: 15)
+                      points: 0)
 
 puts 'User 8 created!'
 
@@ -105,7 +105,7 @@ user_9 = User.create!(password: '123456',
                       first_name: 'Anne',
                       last_name: 'Hofmann',
                       car_plate: 'GGG 777',
-                      points: 10)
+                      points: 61)
 
 puts 'User 9 created!'
 
@@ -115,65 +115,9 @@ user_10 = User.create!(password: '123456',
                       first_name: 'Drazen',
                       last_name: 'Vukovic',
                       car_plate: 'AAA 111',
-                      points: 0)
+                      points: -36)
 
 
-user_5 = User.create!(password: '123456',
-                      email: 'roberta@ikea.com',
-                      photo: 'https://kitt.lewagon.com/placeholder/users/atmosfeer',
-                      first_name: 'Robert',
-                      last_name: 'Andersson',
-                      car_plate: 'FED 654',
-                      points: -60)
-puts 'User 5 created!'
-
-user_6 = User.create!(password: '123456',
-                      email: 'antona@ikea.com',
-                      photo: 'https://kitt.lewagon.com/placeholder/users/atmosfeer',
-                      first_name: 'Anton',
-                      last_name: 'Svensson',
-                      car_plate: 'IHG 987',
-                      points: -98)
-
-puts 'User 6 created!'
-
-user_7 = User.create!(password: '123456',
-                      email: 'alana@ikea.com',
-                      photo: 'https://kitt.lewagon.com/placeholder/users/alancaunt',
-                      first_name: 'Alan',
-                      last_name: 'Caunt',
-                      car_plate: 'III 999',
-                      points: 99)
-
-puts 'User 7 created!'
-
-user_8 = User.create!(password: '123456',
-                      email: 'andreasa@ikea.com',
-                      photo: 'https://kitt.lewagon.com/placeholder/users/amansson',
-                      first_name: 'Andreas',
-                      last_name: 'Månsson',
-                      car_plate: 'NIT 851',
-                      points: 15)
-
-puts 'User 8 created!'
-
-user_9 = User.create!(password: '123456',
-                      email: 'annea@ikea.com',
-                      photo: 'https://kitt.lewagon.com/placeholder/users/annemff',
-                      first_name: 'Anne',
-                      last_name: 'Hofmann',
-                      car_plate: 'GGG 777',
-                      points: 10)
-
-puts 'User 9 created!'
-
-user_10 = User.create!(password: '123456',
-                      email: 'drazena@ikea.com',
-                      photo: 'https://kitt.lewagon.com/placeholder/users/drazenv',
-                      first_name: 'Drazen',
-                      last_name: 'Vukovic',
-                      car_plate: 'AAA 111',
-                      points: 0)
 
 puts 'User 10 created!'
 
