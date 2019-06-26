@@ -7,13 +7,16 @@
   <div class='ev-flex-card'>
     <div id='ev-name'><%= @user.first_name %></div>
     <div id='points' class='d-flex justify-content-between'>
-      <div id="acdc-div">
-        <%= image_tag 'acdc_colors.png', class: "avatar" %>
-      </div>
-      <div>
+      <div id="acdc">
         <% if @user.points >= 0 %>
+          <%= image_tag 'acdc_green.png', class: "avatar" %>
+          </div>
+          <div>
           <p>+<%= @user.points %></p>
         <% else %>
+          <%= image_tag 'acdc_red.png', class: "avatar" %>
+          </div>
+          <div>
           <%= @user.points %>
         <% end %>
       </div>
