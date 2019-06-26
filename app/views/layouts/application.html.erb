@@ -15,8 +15,9 @@
 
     <%#= rails style linking of the favicon -->
     <%= favicon_link_tag asset_path('favicon-32x32.png') %>
+
   </head>
-  <body>
+  <body <% if action_name == "acdc" %><%= ' id=acdc-body' %><% end %>>
 
      <%= render 'shared/flashes' %>
 
