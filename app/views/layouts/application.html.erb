@@ -8,6 +8,8 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= favicon_link_tag asset_path('favicon-32x32.png') %>
+
+
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
@@ -15,6 +17,13 @@
 
     <%#= rails style linking of the favicon -->
     <%= favicon_link_tag asset_path('favicon-32x32.png') %>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= asset_path("icons/apple-icon-76x76.png") %>">
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= asset_path("icons/apple-icon-60x60.png") %>">
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= asset_path("icons/apple-icon-57x57.png") %>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= asset_path("icons/apple-icon-72x72.png") %>">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
   </head>
   <body>
 
