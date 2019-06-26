@@ -16,7 +16,6 @@ class PagesController < ApplicationController
     # 4...and there is a queue or no available charger posts
     # 5.. and charger post is available
     @no_queue = Queueing.no_queue?
-    @available_posts = ChargingPost.available_posts
 
     # initiate
     @charging_session = ChargingSession.new
@@ -35,5 +34,13 @@ class PagesController < ApplicationController
 
   def find_available_posts
     @available_posts = ChargingPost.available_posts
+  end
+
+  def queue_refresh
+    @myturn = current_user.myturn?
+    obj = { myturn: @myturn, userId: current_user.id }
+    respond_to do |format|
+      format.js { render json: obj }
+    end
   end
 end
