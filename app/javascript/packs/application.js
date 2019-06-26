@@ -1,2 +1,2 @@
 import "bootstrap";
-import 'modules/progressbar.js';
+import '../modules/progressbar.js';
