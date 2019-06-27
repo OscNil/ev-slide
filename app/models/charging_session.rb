@@ -30,11 +30,5 @@ class ChargingSession < ApplicationRecord
       my_queue.end_time = Time.now.utc
       my_queue.save
     end
-
-    # if @queueing.save
-    #   redirect_to authenticated_root_path, notice: "charging updated successfully"
-    # else
-    #   redirect_to authenticated_root_path, alert: "issue with charging update"
-    # end
   end
 end

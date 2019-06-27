@@ -1,7 +1,3 @@
-<% flash.each do | name, msg | %>
-<%= content_tag :div, msg, :id => "flash" if msg.length > 0 %>
-<% end %>
-
 <% @top_users_in_acdc_order.each_with_index do | user, idx | %>
   <div class='ev-card d-flex justify-content-between' id="high-score-card">
     <div><%= image_tag 'halo_yellow.png', class: "avatar halo" %><%= image_tag user.photo, class: "avatar avatar-high-score" %></div>

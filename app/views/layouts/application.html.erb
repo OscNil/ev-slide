@@ -29,8 +29,6 @@
   </head>
   <body <% if action_name == "acdc" %><%= ' id=acdc-body' %><% end %>>
 
-     <%= render 'shared/flashes' %>
-
     <% if controller.controller_name == 'sessions' ||
       controller.controller_name == 'passwords' ||
       controller.controller_name == 'registrations' %>

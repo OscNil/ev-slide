@@ -11,9 +11,6 @@ class ChargingSessionsController < ApplicationController
 
       if @session.save
         redirect_to authenticated_root_path
-
-        # The line below should only be implemented for the purpose of finding the location of error messages
-        # redirect_to authenticated_root_path, notice: "charging creation successfully"
       else
         redirect_to authenticated_root_path, alert: "issue with charging creation"
       end
@@ -26,8 +23,6 @@ class ChargingSessionsController < ApplicationController
 
     if @session.save
       redirect_to authenticated_root_path
-      # The line below should only be implemented for the purpose of finding the location of error messages
-      # redirect_to authenticated_root_path, notice: "charging updated successfully"
     else
       redirect_to authenticated_root_path, alert: "issue with charging update"
     end
