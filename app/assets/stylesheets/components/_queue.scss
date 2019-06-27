@@ -16,47 +16,18 @@
   background-color: $ev-green;
 }
 
-#ev-queue-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 320px;
-  margin-left: 5px;
-}
-
-#ev-leave-queue-div {
-//  align-items: center;
-//  justify-content: space-between;
-//  width: 320px;
-}
-
-#ev-leave-queue-p{
-  margin-bottom: 0px;
-}
-
-.ev-queue-img {
-  height: 35px;
-}
-
 #q-charger {
   height: 25px;
 }
 #ev-queue-number {
   position: absolute;
   padding-left: 30px;
-
-  // width: 35px;
-  // height: 35px;
-  // text-align: center;
-  // border: 2px solid $ev-green;
-  // box-shadow: $accent-box-shadow;
-  // padding-top: 4px;
 }
 #ev-queue-pic {
   position: relative;
 }
 .ticket {
-  height: 38px;
+  height: 35px;
   box-shadow: $accent-box-shadow;
 }
 #ev-p-queue-number {
