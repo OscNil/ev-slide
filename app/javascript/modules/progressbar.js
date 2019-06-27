@@ -7,7 +7,6 @@ let mins;
 let seconds;
 let value = '';
 let circle_text;
-let dennis;
 
 let start_time = document.querySelector('#starting-time');
 
@@ -38,38 +37,26 @@ if (start_time != null) {
           begin_state = state.offset;
         }
       count += 1;
-      let decimal = Math.round(state.offset / parseFloat(begin_state) * 1000, 0.5)
-      // if(circle.text) {
-        //   if (decimal > 125) {
-        //   circle.text.style.color = "rgb(50,195,178)";
-        // } else if(decimal <= 125 && decimal > 0){
-        //   circle.text.style.color = "rgb(246,142,79)";
-        // } else {
-        //   circle.text.style.color = "rgb(255, 63, 63)";
-        //   decimal = 1;
-        // }
-        //   console.log(circle.text.style.color)
-        // };
-        if (decimal == 0 ){
-          color = "rgb(255, 63, 63)";
-          circle.text.style.color = "rgb(255, 63, 63)";
-          // decimal = 1;
-        } else if(decimal <= 125 && decimal > 0){
-          color = "rgb(246,142,79)";
-          circle.text.style.color = "rgb(246,142,79)";
-        } else if (decimal > 125) {
-          color = "rgb(50,195,178)";
-          circle.text.style.color = "rgb(50,195,178)";
-        }
-      circle.path.setAttribute('stroke', color);
+      let decimal = Math.round(state.offset / parseFloat(begin_state) * 1000, 0.5);
+      if (decimal == 0 ){
+        color = "rgb(255, 63, 63)";
+        circle.text.style.color = "rgb(255, 63, 63)";
+        // decimal = 1;
+      } else if(decimal <= 125 && decimal > 0){
+        color = "rgb(246,142,79)";
+        circle.text.style.color = "rgb(246,142,79)";
+      } else if (decimal > 125) {
+        color = "rgb(50,195,178)";
+        circle.text.style.color = "rgb(50,195,178)";
       }
+      circle.path.setAttribute('stroke', color);
     }
-  });
-
+  }
+});
 
 }
-  const clock = document.querySelector('.time-status');
-  const curr_clock = document.querySelector('.fa-clock');
+const clock = document.querySelector('.time-status');
+const curr_clock = document.querySelector('.fa-clock');
 setInterval(setDate, 1000);
 
 // ---------     Functions     --------- //
@@ -93,17 +80,17 @@ function calcStatus() {
 }
 function setColor() {
   calcStatus();
-    if (status < -0.99999999999){
-      color = "rgb(198, 63, 63)";
-      status = -1;
-    }
-    else if (status < -0.875){
-      color = "rgb(246,142,79)";
-    }
-    else{
-      color = "rgb(50,195,178)";
-    }
+  if (status < -0.99999999999){
+    color = "rgb(198, 63, 63)";
+    status = -1;
   }
+  else if (status < -0.875){
+    color = "rgb(246,142,79)";
+  }
+  else{
+    color = "rgb(50,195,178)";
+  }
+}
 
 
 function setDate() {
@@ -127,9 +114,6 @@ function setDate() {
 
     let start_time_seconds = start_hour + start_minute + start_second;
     let time_now_seconds = ((mins_now * 60) + parseFloat(seconds_now));
-
-    console.log('Start time: ' + start_time_seconds);
-    console.log('Time now: ' + time_now_seconds);
 
     // Check if elapsed time is less than four hours
     if ( start_time_seconds >= time_now_seconds) {
@@ -186,14 +170,6 @@ function setDate() {
         clock.innerText = hours_over+':'+minutes_over+':'+seconds_over;
       }
 
-
-
-
-
-
-
-      // status = 1;
-      // color = "rgb(198, 63, 63)";
     }
     // Update current time
     if (minute_now < 10 ){
