@@ -36,6 +36,7 @@ body {
   justify-content: center;
   padding-top: 30%;
 }
+
 #login-app_name {
   font-family: $body-font;
   font-size: 24px;
@@ -44,6 +45,17 @@ body {
 
 #logo {
   width: 130px;
+  margin-top: -7px;
+  animation: slideCar 2s;
+}
+@keyframes slideCar {
+  from {
+    transform: translateX(-128px);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
 }
 
 .form-control {
