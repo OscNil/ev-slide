@@ -10,9 +10,9 @@
   height: 12%;
 }
 
-#high-score-card {
-  height: 11%;
-}
+/* #high-score-card {
+  height: 11.5%;
+} */
 
 #charging-post-dropdown {
   margin-top: 1rem;
@@ -141,6 +141,7 @@ select {
 .ev-spacing {
   padding-left: 10px;
 }
+
 #ev-battery-pic {
   position: relative;
 }
@@ -156,4 +157,12 @@ select {
 .battery {
   height: 50px;
   box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+}
+
+.fire-wrapper {
+  position: relative;
+  width: 40%;
+  height: 55px;
+  overflow: hidden;
+
 }
