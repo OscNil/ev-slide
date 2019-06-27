@@ -62,8 +62,19 @@ select {
 .score-div {
   // position: absolute;
   z-index: 10;
-  margin-left: -50px;
-  margin-top: -10px;
+  margin-left: 16px;
+  margin-top: -41px;
+}
+
+.positive-score {
+  color: $ev-blue;
+  font-size: 1.5rem;
+}
+
+.negative-score {
+  color: $ev-red;
+  font-size: 2rem;
+  text-shadow: 1px 1px black;
 }
 
 #points {
@@ -150,12 +161,4 @@ select {
 .battery {
   height: 50px;
   box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-}
-
-.fire-wrapper {
-  position: relative;
-  width: 40%;
-  height: 55px;
-  overflow: hidden;
-
 }
