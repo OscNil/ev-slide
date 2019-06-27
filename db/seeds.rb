@@ -39,7 +39,7 @@ user_2 = User.create!(password: '123456',
                       first_name: 'Dennis',
                       last_name: 'Persson',
                       car_plate: 'DEF 456',
-                      points: 59)
+                      points: -22)
 
 puts 'User 2 created!'
 user_3 = User.create!(password: '123456',
@@ -48,7 +48,7 @@ user_3 = User.create!(password: '123456',
                       first_name: 'Lena',
                       last_name: 'Nigrell',
                       car_plate: 'GHI 789',
-                      points: -10)
+                      points: 32)
 puts 'User 3 created!'
 
 user_4 = User.create!(password: '123456',
