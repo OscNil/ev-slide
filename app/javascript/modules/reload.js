@@ -5,6 +5,7 @@ function reload(){
 
   setInterval(function(){
     $.ajax({ url: "/queue_refresh", success: function(data){
+      console.log("Hej")
       if(!data.myturn) return;
 
       // query class to find card with correct user id
