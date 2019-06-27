@@ -5,6 +5,9 @@ let status;
 let hours;
 let mins;
 let seconds;
+let value = '';
+let circle_text;
+let dennis;
 
 let start_time = document.querySelector('#starting-time');
 
@@ -26,22 +29,40 @@ if (start_time != null) {
     trailWidth: 12,
     trailColor: '#f2f4f6',
     svgStyle: null,
+    text: {
+      value,
+    },
     step: (state, circle) => {
-
-      if(count > 0 && count < 2){
-        begin_state = state.offset;
-      }
-        count += 1;
+      if (circle.text != null) {
+        if(count > 0 && count < 2){
+          begin_state = state.offset;
+        }
+      count += 1;
       let decimal = Math.round(state.offset / parseFloat(begin_state) * 1000, 0.5)
-      if (decimal > 125) {
-        color = "rgb(50,195,178)"
-      } else if(decimal <= 125 && decimal > 0){
-        color = "rgb(246,142,79)"
-      } else {
-        color = "rgb(255, 63, 63)"
-        decimal = 1;
-      }
+      // if(circle.text) {
+        //   if (decimal > 125) {
+        //   circle.text.style.color = "rgb(50,195,178)";
+        // } else if(decimal <= 125 && decimal > 0){
+        //   circle.text.style.color = "rgb(246,142,79)";
+        // } else {
+        //   circle.text.style.color = "rgb(255, 63, 63)";
+        //   decimal = 1;
+        // }
+        //   console.log(circle.text.style.color)
+        // };
+        if (decimal == 0 ){
+          color = "rgb(255, 63, 63)";
+          circle.text.style.color = "rgb(255, 63, 63)";
+          // decimal = 1;
+        } else if(decimal <= 125 && decimal > 0){
+          color = "rgb(246,142,79)";
+          circle.text.style.color = "rgb(246,142,79)";
+        } else if (decimal > 125) {
+          color = "rgb(50,195,178)";
+          circle.text.style.color = "rgb(50,195,178)";
+        }
       circle.path.setAttribute('stroke', color);
+      }
     }
   });
 
@@ -86,6 +107,11 @@ function setColor() {
 
 
 function setDate() {
+
+  const clock = document.querySelector('.time-status');
+  const curr_clock = document.querySelector('.fa-clock');
+  const timer = document.querySelector('.progressbar-text');
+
   // Grab current time
   if (start_time != null) {
     let date = new Date();
@@ -101,6 +127,9 @@ function setDate() {
 
     let start_time_seconds = start_hour + start_minute + start_second;
     let time_now_seconds = ((mins_now * 60) + parseFloat(seconds_now));
+
+    console.log('Start time: ' + start_time_seconds);
+    console.log('Time now: ' + time_now_seconds);
 
     // Check if elapsed time is less than four hours
     if ( start_time_seconds >= time_now_seconds) {
@@ -125,13 +154,9 @@ function setDate() {
       }
 
       // Update remaining time
-      if ( hours === '00') {
-        clock.innerText = mins+':'+seconds;
-      }
-      else
-      {
-        clock.innerText = hours+':'+mins+':'+seconds;
-      }
+      timer.innerText = hours+':'+mins+':'+seconds;
+      clock.innerText = hours+':'+mins+':'+seconds;
+
       date = new Date();
       calcStatus();
 
@@ -152,12 +177,21 @@ function setDate() {
         seconds_over = '0' + seconds_over;
       }
       if ( hours_over === 0) {
-      clock.innerText = minutes_over+':'+seconds_over;
+        timer.innerText = minutes_over+':'+seconds_over;
+        clock.innerText = minutes_over+':'+seconds_over;
       }
       else
       {
+        timer.innerText = hours_over+':'+minutes_over+':'+seconds_over;
         clock.innerText = hours_over+':'+minutes_over+':'+seconds_over;
       }
+
+
+
+
+
+
+
       // status = 1;
       // color = "rgb(198, 63, 63)";
     }
