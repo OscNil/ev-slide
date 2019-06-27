@@ -1,0 +1,19 @@
+.cloud {
+  // position: relative;
+  margin-left: -50px;
+  margin-top: -10px;
+  z-index: 1;
+  width  : 10px;
+  height : 10px;
+  // margin : 20px auto;
+  //animation : shake .5s ease-in infinite;
+}
+
+@keyframes shake {
+  50%  {transform  : rotate( 2deg);}
+  100% {transform  : rotate(-2deg);}
+}
+
+.cloud-img {
+  width: 80px;
+}
