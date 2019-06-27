@@ -141,3 +141,19 @@ select {
 .ev-spacing {
   padding-left: 10px;
 }
+#ev-battery-pic {
+  position: relative;
+}
+#ev-battery-number {
+  position: absolute;
+  top: 12px;
+  left: 8px;
+}
+#ev-p-battery-number {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.battery {
+  height: 50px;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+}
