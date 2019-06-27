@@ -35,7 +35,6 @@
   </div>
 </div>
 
-
 <!-- Select what to display dependeing on the state -->
 <% if @session %>
 <!-- If the user is charging... -->
@@ -67,7 +66,7 @@
   </div>
 
 <% elsif @my_ongoing_queueing and @my_turn %>
-      <!-- If the user is queueing... and there IS an available post for the user -->
+<!-- If the user is queueing... and there IS an available post for the user -->
 
   <div class='ev-card d-flex justify-content-between' >
     <div><%= image_tag "queue_grey.png", class: "avatar-square" %></div>
@@ -100,7 +99,7 @@
   <% end %>
 
 <% elsif @my_ongoing_queueing %>
-  <!-- If the user is queueing... and there is NOT an available post yet for the user -->
+<!-- If the user is queueing... and there is NOT an available post yet for the user -->
   <div class='ev-card d-flex justify-content-between' >
     <div><%= image_tag "queue_grey.png", class: "avatar-square" %></div>
     <div class='ev-flex-card'>
@@ -115,7 +114,7 @@
   </div>
 
 <% elsif !@no_queue or @available_posts.empty? %>
-    <!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->
+<!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->
   <div class='ev-card d-flex justify-content-between' >
     <div><%= image_tag "queue_grey.png", class: "avatar-square" %></div>
     <div class="ev-empty"></div>
@@ -127,7 +126,7 @@
   </div>
 
 <% elsif !@available_posts.empty? %>
-      <!-- If the user is NOT charging or NOT in queue and there is NO queue... and charger post is available-->
+<!-- If the user is NOT charging or NOT in queue and there is NO queue... and charger post is available-->
   <%= simple_form_for (@charging_session) do |f| %>
     <div class='ev-card d-flex justify-content-between'>
       <div id="outlet-div"><%= image_tag "charger.png", class: "avatar-square-large charger" %><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
