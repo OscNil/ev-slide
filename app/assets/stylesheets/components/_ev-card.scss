@@ -42,10 +42,6 @@ select {
   width: 100% !important;
 }
 
-#outlet-div {
-
-}
-
 .charger {
   width: 50px;
 }
@@ -63,20 +59,17 @@ select {
   height: 35px;
 }
 
+.score-div {
+  // position: absolute;
+  z-index: 10;
+  margin-left: -50px;
+  margin-top: -10px;
+}
+
 #points {
-  display: flex;
   align-items: center;
   justify-content:center;
-  background-color: white;
   padding: 0.2rem 0.5rem;
-  border-radius: 10px;
-  p {
-    margin-bottom: 0px;
-  }
-
-}
-#acdc {
-  // padding: 1rem;
 }
 
 #plus_points {

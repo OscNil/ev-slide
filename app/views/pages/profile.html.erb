@@ -2,15 +2,14 @@
   <div><%= image_tag @user.photo, class: "avatar" %></div>
   <div class='ev-flex-card'>
     <div id='ev-name'><%= @user.first_name %></div>
-    <div id='points' class='d-flex justify-content-between'>
-      <div id="acdc">
+    <div id='points' class=''>
+      <div class="cloud">
         <% if @user.points >= 0 %>
-        <%= image_tag 'acdc_green.png', class: "avatar" %>
-      </div>
-      <div>
-        <p>+<%= @user.points %></p>
+          <div class="score-div">
+            <p>+<%= @user.points %></p>
+          </div>
         <% else %>
-        <%= image_tag 'acdc_red.png', class: "avatar" %>
+        <%= image_tag 'cloud.png', class: "cloud-img" %>
       </div>
       <div>
         <%= @user.points %>
@@ -139,7 +138,7 @@
           <p>Start<span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
           <% end %>
         </div>
-      </div>    
+      </div>
     </div>
   <% end %>
 <% end %>
