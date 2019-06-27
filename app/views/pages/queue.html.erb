@@ -10,7 +10,7 @@
 
 <!-- If there is a queue... -->
 <% @users_in_queue_in_order.each_with_index do | user, idx | %>
-  <div class='ev-card d-flex justify-content-between <%= user.id %>
+  <div class='ev-card d-flex justify-content-between ev-card-<%= user.id %>
     <% if user.id == current_user.id %>
       <%= " me-card" %>
       <% if @available_posts.count > idx %>
