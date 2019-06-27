@@ -23,6 +23,8 @@ if (start_time != null) {
     easing: 'easeInOut',
     duration: 1000,
     color,
+    trailWidth: 12,
+    trailColor: '#f2f4f6',
     svgStyle: null,
     step: (state, circle) => {
 
@@ -39,14 +41,6 @@ if (start_time != null) {
         color = "rgb(255, 63, 63)"
         decimal = 1;
       }
-
-      // if (decimal == 0) {
-      //   color = "rgb(255, 63, 63)"
-      // } else if(decimal <= 125 && decimal > 0){
-      //   color = "rgb(246,142,79)"
-      // } else {
-      //   color = "rgb(50,195,178)"
-      // }
       circle.path.setAttribute('stroke', color);
     }
   });

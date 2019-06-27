@@ -5,18 +5,18 @@
     <div id='points' class='d-flex justify-content-between'>
       <div id="acdc">
         <% if @user.points >= 0 %>
-          <%= image_tag 'acdc_green.png', class: "avatar" %>
-          </div>
-          <div>
-          <p>+<%= @user.points %></p>
+        <%= image_tag 'acdc_green.png', class: "avatar" %>
+      </div>
+      <div>
+        <p>+<%= @user.points %></p>
         <% else %>
-          <%= image_tag 'acdc_red.png', class: "avatar" %>
-          </div>
-          <div>
-          <%= @user.points %>
+        <%= image_tag 'acdc_red.png', class: "avatar" %>
+      </div>
+      <div>
+        <%= @user.points %>
         <% end %>
       </div>
-  </div>
+    </div>
   </div>
 </div>
 
@@ -24,7 +24,15 @@
   <div><%= image_tag 'car_grey.png', class: "avatar" %></div>
   <div class='ev-flex-card'>
     <div><p id="reg-plate"><%= @user.car_plate %></p></div>
-    <div class="ev-empty"></div>
+    <div class="fire-wrapper">
+      <div class="fire">
+        <span class="flame"></span>
+        <span class="flame"></span>
+        <span class="flame"></span>
+        <span class="flame"></span>
+        <span class="flame"></span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -33,103 +41,103 @@
 <% if @session %>
 <!-- If the user is charging... -->
 
-  <div class="ev-card d-flex justify-content-between">
-    <div><%= image_tag "charger.png", class: "charger" %></div>
-    <div class='ev-flex-card'>
-      <div><%= @session.charging_post_id %></div>
-      <div id='ev-start-charging-button'>
-        <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning btn-flash"  do %>
-          <p>Stop <span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
-        <% end %>
-      </div>
+<div class="ev-card d-flex justify-content-between">
+  <div><%= image_tag "charger.png", class: "charger" %></div>
+  <div class='ev-flex-card'>
+    <div><%= @session.charging_post_id %></div>
+    <div id='ev-start-charging-button'>
+      <%= link_to charging_session_path(@session),  method: :patch, class: "btn btn-warning btn-flash"  do %>
+      <p>Stop <span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
+      <% end %>
     </div>
   </div>
+</div>
 
-  <p id="starting-time"><%= (@session.start_time).strftime("%H:%M:%S") %>
+<p id="starting-time"><%= (@session.start_time).strftime("%H:%M:%S") %>
   <div class="activity-field">
     <p><i class="fas fa-clock"></i> &nbsp&nbsp&nbsp
       <i class="fas fa-hourglass-end"></i>&nbsp<%= (@session.start_time + 240).strftime("%H:%M:%S") %></p>
-    <div id="donut">
-    </div>
+      <div id="donut">
+      </div>
 
-    <div class="progress-clock">
-      <p><i class="fas fa-hourglass-start"></i> &nbsp&nbsp
-      <p class="time-status"><%= @session.time_left_string %></p></p>
-    </div>
-  </div>
+      <div class="progress-clock">
+        <p><i class="fas fa-hourglass-start"></i> &nbsp&nbsp
+          <p class="time-status"><%= @session.time_left_string %></p></p>
+        </div>
+      </div>
 
-<% elsif @my_ongoing_queueing and @my_turn %>
-<!-- If the user is queueing... and there IS an available post for the user -->
+      <% elsif @my_ongoing_queueing and @my_turn %>
+      <!-- If the user is queueing... and there IS an available post for the user -->
 
-  <div class='ev-card d-flex justify-content-between' >
-    <div><%= image_tag "queue_grey.png", class: "ev-queue-img" %></div>
-    <div class='ev-flex-card'>
-      <div id='ev-queue-pic'><%= image_tag "ticket_green.png", class: "ticket" %></div>
-      <div id='ev-queue-number'><p id='ev-p-queue-number'><%= @my_number_in_queue %></p></div>
+      <div class='ev-card d-flex justify-content-between' >
+        <div><%= image_tag "queue_grey.png", class: "ev-queue-img" %></div>
+        <div class='ev-flex-card'>
+          <div id='ev-queue-pic'><%= image_tag "ticket_green.png", class: "ticket" %></div>
+          <div id='ev-queue-number'><p id='ev-p-queue-number'><%= @my_number_in_queue %></p></div>
+          <div>
+            <%= simple_form_for (@my_ongoing_queueing) do |f| %>
+            <%= f.submit 'Leave queue', method: :patch, class: "btn btn-warning" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <%= simple_form_for (@charging_session) do |f| %>
+      <div class='ev-card d-flex justify-content-between' >
+        <div><%= image_tag "charger.png", class: "charger" %></div>
+        <div class='ev-flex-card'>
+          <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
+          <div>
+            <div id='ev-start-charging-button'>
+             <%= button_tag(type: 'submit', class: "btn btn-success btn-flash") do %>
+             <p>Start<span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
+             <% end %>
+           </div>
+         </div>
+       </div>
+     </div>
+     <% end %>
+
+
+     <% elsif @my_ongoing_queueing %>
+     <!-- If the user is queueing... and there is NOT an available post yet for the user -->
+     <div class='ev-card d-flex justify-content-between' >
+      <div><%= image_tag "queue_grey.png", class: "ev-queue-img" %></div>
+      <div><%= @my_number_in_queue %></div>
       <div>
         <%= simple_form_for (@my_ongoing_queueing) do |f| %>
-        <%= f.submit 'Leave queue', method: :patch, class: "btn btn-warning" %>
+        <%= f.submit 'Leave queue', class: "btn btn-warning" , method: :patch %>
       </div>
+      <% end %>
     </div>
-  </div>
-<% end %>
 
-  <%= simple_form_for (@charging_session) do |f| %>
+    <% elsif !@no_queue or @available_posts.empty? %>
+    <!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->
+
     <div class='ev-card d-flex justify-content-between' >
-      <div><%= image_tag "charger.png", class: "charger" %></div>
-      <div class='ev-flex-card'>
+      <div><%= image_tag "queue_grey.png", class: "avatar-square" %></div>
+      <div class="ev-empty"></div>
+      <div><%= simple_form_for (@queueing) do |f| %>
+        <%= f.submit 'Enter queue', class: "btn btn-success" %>
+        <% end %></div>
+      </div>
+
+      <% elsif !@available_posts.empty? %>
+      <!-- If the user is NOT charging or NOT in queue and there is NO queue... and charger post is available-->
+
+
+      <%= simple_form_for (@charging_session) do |f| %>
+      <div class='ev-card d-flex justify-content-between'>
+        <div id="outlet-div"><%= image_tag "charger.png", class: "charger" %><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
         <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
         <div>
           <div id='ev-start-charging-button'>
-         <%= button_tag(type: 'submit', class: "btn btn-success btn-flash") do %>
-            <p>Start<span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
-         <% end %>
+           <%= button_tag(type: 'submit', class: "btn btn-success btn-flash") do %>
+           <p>Start<span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
+           <% end %>
          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-
-<% elsif @my_ongoing_queueing %>
-  <!-- If the user is queueing... and there is NOT an available post yet for the user -->
-  <div class='ev-card d-flex justify-content-between' >
-    <div><%= image_tag "queue_grey.png", class: "ev-queue-img" %></div>
-    <div><%= @my_number_in_queue %></div>
-    <div>
-      <%= simple_form_for (@my_ongoing_queueing) do |f| %>
-      <%= f.submit 'Leave queue', class: "btn btn-warning" , method: :patch %>
-    </div>
-    <% end %>
-  </div>
-
-<% elsif !@no_queue or @available_posts.empty? %>
-<!-- If the user is NOT charging or NOT in queue.. and there is a queue or no available charger posts-->
-
-<div class='ev-card d-flex justify-content-between' >
-  <div><%= image_tag "queue_grey.png", class: "avatar-square" %></div>
-  <div class="ev-empty"></div>
-  <div><%= simple_form_for (@queueing) do |f| %>
-  <%= f.submit 'Enter queue', class: "btn btn-success" %>
-  <% end %></div>
-</div>
-
-<% elsif !@available_posts.empty? %>
-<!-- If the user is NOT charging or NOT in queue and there is NO queue... and charger post is available-->
-
-
-  <%= simple_form_for (@charging_session) do |f| %>
-    <div class='ev-card d-flex justify-content-between'>
-      <div id="outlet-div"><%= image_tag "charger.png", class: "charger" %><%= f.label :charging_post, label: ".", required: false, class: "hidden-placeholder" %></div>
-      <div id="charging-post-dropdown"><%= f.association :charging_post, collection:@available_posts, default: @available_posts[0],  label: false, label_method: :id %></div>
-      <div>
-      <div id='ev-start-charging-button'>
-       <%= button_tag(type: 'submit', class: "btn btn-success btn-flash") do %>
-       <p>Start<span class="ev-spacing"><i class="fas fa-bolt"></i></span> </p>
-       <% end %>
        </div>
-      </div>
-    </div>
-  <% end %>
+     </div>
+     <% end %>
 
-<% end %>
+     <% end %>
