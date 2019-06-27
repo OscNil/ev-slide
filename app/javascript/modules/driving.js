@@ -5,7 +5,6 @@ function driving(){
 
     if (where > 0) return;
     document.querySelector(`.login-logo`).style.marginLeft = where.toString() + "px";
-    console.log(where);
-  }, 10);
+  }, 1);
 }
 export default driving;
