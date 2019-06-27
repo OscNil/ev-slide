@@ -4,15 +4,11 @@
     <div id='ev-name'><%= @user.first_name %></div>
     <div id='points' class=''>
       <div class="cloud">
+        <%= image_tag 'cloud.png', class: "cloud-img" %>
         <% if @user.points >= 0 %>
           <div class="score-div">
-            <p>+<%= @user.points %></p>
+            <p class="positive-score">+<%= @user.points %></p>
           </div>
-        <% else %>
-        <%= image_tag 'cloud.png', class: "cloud-img" %>
-      </div>
-      <div>
-        <%= @user.points %>
         <% end %>
       </div>
     </div>
@@ -24,6 +20,9 @@
   <div class='ev-flex-card'>
     <div><p id="reg-plate"><%= @user.car_plate %></p></div>
     <div class="fire-wrapper">
+      <% if @user.points < 0 %>
+        <p class="negative-score"><%= @user.points %></p>
+      <% end %>
       <div class="fire">
         <span class="flame"></span>
         <span class="flame"></span>

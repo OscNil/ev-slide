@@ -1,3 +1,11 @@
+.fire-wrapper {
+  position: relative;
+  width: 40%;
+  height: 55px;
+  overflow: hidden;
+  text-align: center;
+}
+
 .fire {
   position: absolute;
   bottom: 0px;
@@ -42,7 +50,6 @@
   top: 20%;
   background-color: orange;
 }
-
 
 .flame {
   animation: fire-scale .5s infinite alternate;

@@ -1,12 +1,38 @@
 .cloud {
   // position: relative;
-  margin-left: -50px;
-  margin-top: -10px;
+  margin-right: -10px;
+  margin-top: 8px;
   z-index: 1;
-  width  : 10px;
-  height : 10px;
   // margin : 20px auto;
-  //animation : shake .5s ease-in infinite;
+  // animation : shake .5s ease-in infinite;
+  animation : slide-left 3s ease-in infinite;
+}
+
+.slide-left {
+  animation: slide-left 3s ease-in both;
+}
+
+.slide-right {
+  animation: slide-right 0.3s ease-in both;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-120px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(90px);
+  }
+
+  100% {
+    transform: translateX(-120px);
+  }
 }
 
 @keyframes shake {
