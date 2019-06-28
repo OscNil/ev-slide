@@ -56,7 +56,7 @@ if (start_time != null) {
 
 }
 const clock = document.querySelector('.time-status');
-const curr_clock = document.querySelector('.fa-clock');
+const curr_clock = document.querySelector('.ticking-now-clock');
 setInterval(setDate, 1000);
 
 // ---------     Functions     --------- //
@@ -96,7 +96,7 @@ function setColor() {
 function setDate() {
 
   const clock = document.querySelector('.time-status');
-  const curr_clock = document.querySelector('.fa-clock');
+  const curr_clock = document.querySelector('.ticking-now-clock');
   const timer = document.querySelector('.progressbar-text');
 
   // Grab current time

@@ -54,8 +54,14 @@
 
   <p id="starting-time"><%= (@session.start_time).strftime("%H:%M:%S") %></p>
   <div class="activity-field">
-    <p><i class="fas fa-clock"></i> &nbsp&nbsp&nbsp
-      <i class="fas fa-hourglass-end"></i>&nbsp<%= (@session.start_time + 240).strftime("%H:%M:%S") %>
+    <p class="time-display">
+      <i class="fas fa-clock"></i>
+      <span class="ticking-now-clock"></span>
+       &nbsp&nbsp - &nbsp&nbsp
+      <span>
+        <i class="fas fa-hourglass-end">
+        </i>&nbsp<%= (@session.start_time + 240).strftime("%H:%M:%S") %>
+      </span>
     </p>
     <div id="donut"></div>
     <div class="progress-clock">
