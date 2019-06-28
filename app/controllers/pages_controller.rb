@@ -25,6 +25,8 @@ class PagesController < ApplicationController
   def queue
     @users_in_queue_in_order = User.users_in_queue_in_order
     @charging_sessions_start_times = ChargingSession.ongoing_start_times
+    @no_queue = Queueing.no_queue?
+
   end
 
   def acdc
