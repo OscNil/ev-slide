@@ -6,6 +6,15 @@
   text-align: center;
 }
 
+.fire-wrapper-bottom {
+  position: absolute;
+  bottom: -8px;
+  width: 100%;
+  height: 55px;
+  overflow: hidden;
+  text-align: center;
+}
+
 .fire {
   position: absolute;
   bottom: 0px;
